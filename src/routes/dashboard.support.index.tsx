@@ -1,2 +1,2 @@
-import {createFileRoute} from '@tanstack/react-router';import {SupportList} from '@/components/qxt/dashboard-pages';
+import {createFileRoute} from '@tanstack/react-router';import {SupportList} from '@/components/vexo/dashboard-pages';
 export const Route=createFileRoute('/dashboard/support/')({head:()=>({meta:[{title:'Support Tickets — QXT Funded'},{name:'description',content:'Preview and manage QXT Funded support requests.'},{property:'og:title',content:'Support Tickets — QXT Funded'},{property:'og:description',content:'Preview and manage QXT Funded support requests.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:SupportList});

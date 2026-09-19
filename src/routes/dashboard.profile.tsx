@@ -1,2 +1,2 @@
-import {createFileRoute} from '@tanstack/react-router';import {Profile} from '@/components/qxt/dashboard-pages';
+import {createFileRoute} from '@tanstack/react-router';import {Profile} from '@/components/vexo/dashboard-pages';
 export const Route=createFileRoute('/dashboard/profile')({head:()=>({meta:[{title:'Profile — QXT Funded'},{name:'description',content:'Preview QXT Funded profile settings.'},{property:'og:title',content:'Profile — QXT Funded'},{property:'og:description',content:'Preview QXT Funded profile settings.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:Profile});

@@ -1,2 +1,2 @@
-import {createFileRoute} from '@tanstack/react-router';import {Security} from '@/components/qxt/dashboard-pages';
+import {createFileRoute} from '@tanstack/react-router';import {Security} from '@/components/vexo/dashboard-pages';
 export const Route=createFileRoute('/dashboard/security')({head:()=>({meta:[{title:'Security — QXT Funded'},{name:'description',content:'Preview QXT Funded password and security settings.'},{property:'og:title',content:'Security — QXT Funded'},{property:'og:description',content:'Preview QXT Funded password and security settings.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:Security});

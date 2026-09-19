@@ -1,2 +1,2 @@
-import {createFileRoute} from '@tanstack/react-router';import {BrokerStep} from '@/components/qxt/checkout-pages';
+import {createFileRoute} from '@tanstack/react-router';import {BrokerStep} from '@/components/vexo/checkout-pages';
 export const Route=createFileRoute('/checkout/details')({head:()=>({meta:[{title:'Select Broker — QXT Funded Checkout'},{name:'description',content:'Choose a broker environment for your QXT Funded account.'},{property:'og:title',content:'Select Broker — QXT Funded Checkout'},{property:'og:description',content:'Choose a broker environment for your QXT Funded account.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:()=> <BrokerStep/>});

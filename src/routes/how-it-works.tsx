@@ -1,2 +1,2 @@
-import {createFileRoute} from '@tanstack/react-router';import {How} from '@/components/qxt/public-pages';
+import {createFileRoute} from '@tanstack/react-router';import {How} from '@/components/vexo/public-pages';
 export const Route=createFileRoute('/how-it-works')({head:()=>({meta:[{title:'How It Works — QXT Funded'},{name:'description',content:'Learn the path from account selection to funded trader.'},{property:'og:title',content:'How It Works — QXT Funded'},{property:'og:description',content:'Learn the path from account selection to funded trader.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:()=> <How/>});

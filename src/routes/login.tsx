@@ -1,2 +1,2 @@
-import {createFileRoute} from '@tanstack/react-router';import {Login} from '@/components/qxt/auth-pages';
+import {createFileRoute} from '@tanstack/react-router';import {Login} from '@/components/vexo/auth-pages';
 export const Route=createFileRoute('/login')({head:()=>({meta:[{title:'Sign In — QXT Funded'},{name:'description',content:'Sign in to preview your QXT Funded dashboard.'},{property:'og:title',content:'Sign In — QXT Funded'},{property:'og:description',content:'Sign in to preview your QXT Funded dashboard.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:()=> <Login/>});

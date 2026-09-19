@@ -1,2 +1,2 @@
-import {createFileRoute} from '@tanstack/react-router';import {StatusPage} from '@/components/qxt/legal-status';
+import {createFileRoute} from '@tanstack/react-router';import {StatusPage} from '@/components/vexo/legal-status';
 export const Route=createFileRoute('/500')({head:()=>({meta:[{title:'Server Error — QXT Funded'},{name:'description',content:'QXT Funded service status page.'},{property:'og:title',content:'Server Error — QXT Funded'},{property:'og:description',content:'QXT Funded service status page.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:()=> <StatusPage kind="500"/>});

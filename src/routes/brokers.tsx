@@ -1,2 +1,2 @@
-import {createFileRoute} from '@tanstack/react-router';import {Brokers} from '@/components/qxt/public-pages';
+import {createFileRoute} from '@tanstack/react-router';import {Brokers} from '@/components/vexo/public-pages';
 export const Route=createFileRoute('/brokers')({head:()=>({meta:[{title:'Brokers — QXT Funded'},{name:'description',content:'Explore supported QXT Funded broker environments.'},{property:'og:title',content:'Brokers — QXT Funded'},{property:'og:description',content:'Explore supported QXT Funded broker environments.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:()=> <Brokers/>});

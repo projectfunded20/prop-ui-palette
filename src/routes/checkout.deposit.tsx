@@ -1,2 +1,2 @@
-import {createFileRoute} from '@tanstack/react-router';import {DepositStep} from '@/components/qxt/checkout-pages';
+import {createFileRoute} from '@tanstack/react-router';import {DepositStep} from '@/components/vexo/checkout-pages';
 export const Route=createFileRoute('/checkout/deposit')({head:()=>({meta:[{title:'Confirm Order — QXT Funded Checkout'},{name:'description',content:'Review and confirm your demonstration order.'},{property:'og:title',content:'Confirm Order — QXT Funded Checkout'},{property:'og:description',content:'Review and confirm your demonstration order.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:()=> <DepositStep/>});
