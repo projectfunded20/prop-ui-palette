@@ -1,0 +1,2 @@
+import {createFileRoute} from '@tanstack/react-router';import {PaymentStep} from '@/components/qxt/checkout-pages';
+export const Route=createFileRoute('/checkout/payment')({head:()=>({meta:[{title:'Select Payment — QXT Funded Checkout'},{name:'description',content:'Choose a demonstration payment method.'},{property:'og:title',content:'Select Payment — QXT Funded Checkout'},{property:'og:description',content:'Choose a demonstration payment method.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:()=> <PaymentStep/>});

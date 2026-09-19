@@ -1,0 +1,2 @@
+import {createFileRoute} from '@tanstack/react-router';import {Reviews} from '@/components/qxt/public-pages';
+export const Route=createFileRoute('/reviews')({head:()=>({meta:[{title:'Trader Reviews — QXT Funded'},{name:'description',content:'Read QXT Funded trader reviews and experiences.'},{property:'og:title',content:'Trader Reviews — QXT Funded'},{property:'og:description',content:'Read QXT Funded trader reviews and experiences.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:()=> <Reviews/>});
