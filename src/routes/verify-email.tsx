@@ -1,2 +1,0 @@
-import {createFileRoute} from '@tanstack/react-router';import {Verify} from '@/components/vexo/auth-pages';
-export const Route=createFileRoute('/verify-email')({head:()=>({meta:[{title:'Verify Email — VEXO FUNDED'},{name:'description',content:'Verify your email for VEXO FUNDED.'},{property:'og:title',content:'Verify Email — VEXO FUNDED'},{property:'og:description',content:'Verify your email for VEXO FUNDED.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:()=> <Verify/>});
