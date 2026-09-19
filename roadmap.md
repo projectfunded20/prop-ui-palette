@@ -1,5 +1,13 @@
 # VEXO FUNDED frontend rebrand
 
+## Landing and funding-path redesign
+
+- [ ] Recompose the landing page in the selected Dark Institutional direction
+- [ ] Replace generic feature steps with a credible operational funding journey
+- [ ] Redesign Instant and Challenge listings for desktop and phone
+- [ ] Preserve every existing price, rule, route, and interaction
+- [ ] Verify metadata, desktop, tablet, and phone layouts
+
 - [x] Preserve all existing business data, routes, and mock behavior
 - [x] Replace the complete brand identity and old naming
 - [x] Apply the Carbon & Signal design system across all pages
