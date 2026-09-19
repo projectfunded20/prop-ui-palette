@@ -28,11 +28,19 @@ import { Route as VerifyEmailRouteImport } from './routes/verify-email'
 import { Route as CheckoutDepositRouteImport } from './routes/checkout.deposit'
 import { Route as CheckoutDetailsRouteImport } from './routes/checkout.details'
 import { Route as CheckoutPaymentRouteImport } from './routes/checkout.payment'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as DashboardProfileRouteImport } from './routes/dashboard.profile'
+import { Route as DashboardSecurityRouteImport } from './routes/dashboard.security'
 import { Route as LegalCookiesRouteImport } from './routes/legal.cookies'
 import { Route as LegalPrivacyRouteImport } from './routes/legal.privacy'
 import { Route as LegalRefundRouteImport } from './routes/legal.refund'
 import { Route as LegalRiskRouteImport } from './routes/legal.risk'
 import { Route as LegalTermsRouteImport } from './routes/legal.terms'
+import { Route as DashboardOrdersIndexRouteImport } from './routes/dashboard.orders.index'
+import { Route as DashboardOrdersIdRouteImport } from './routes/dashboard.orders.$id'
+import { Route as DashboardSupportIndexRouteImport } from './routes/dashboard.support.index'
+import { Route as DashboardSupportIdRouteImport } from './routes/dashboard.support.$id'
+import { Route as DashboardSupportNewRouteImport } from './routes/dashboard.support.new'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -129,6 +137,21 @@ const CheckoutPaymentRoute = CheckoutPaymentRouteImport.update({
   path: '/checkout/payment',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardProfileRoute = DashboardProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardSecurityRoute = DashboardSecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const LegalCookiesRoute = LegalCookiesRouteImport.update({
   id: '/legal/cookies',
   path: '/legal/cookies',
@@ -154,6 +177,31 @@ const LegalTermsRoute = LegalTermsRouteImport.update({
   path: '/legal/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardOrdersIndexRoute = DashboardOrdersIndexRouteImport.update({
+  id: '/orders/',
+  path: '/orders/',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardOrdersIdRoute = DashboardOrdersIdRouteImport.update({
+  id: '/orders/$id',
+  path: '/orders/$id',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardSupportIndexRoute = DashboardSupportIndexRouteImport.update({
+  id: '/support/',
+  path: '/support/',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardSupportIdRoute = DashboardSupportIdRouteImport.update({
+  id: '/support/$id',
+  path: '/support/$id',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardSupportNewRoute = DashboardSupportNewRouteImport.update({
+  id: '/support/new',
+  path: '/support/new',
+  getParentRoute: () => DashboardRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -161,7 +209,7 @@ export interface FileRoutesByFullPath {
   '/accounts': typeof AccountsRoute
   '/brokers': typeof BrokersRoute
   '/contact': typeof ContactRoute
-  '/dashboard': typeof DashboardRoute
+  '/dashboard': typeof DashboardRouteWithChildren
   '/faq': typeof FaqRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/how-it-works': typeof HowItWorksRoute
@@ -175,11 +223,19 @@ export interface FileRoutesByFullPath {
   '/checkout/deposit': typeof CheckoutDepositRoute
   '/checkout/details': typeof CheckoutDetailsRoute
   '/checkout/payment': typeof CheckoutPaymentRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/security': typeof DashboardSecurityRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/refund': typeof LegalRefundRoute
   '/legal/risk': typeof LegalRiskRoute
   '/legal/terms': typeof LegalTermsRoute
+  '/dashboard/': typeof DashboardIndexRoute
+  '/dashboard/orders/$id': typeof DashboardOrdersIdRoute
+  '/dashboard/support/$id': typeof DashboardSupportIdRoute
+  '/dashboard/support/new': typeof DashboardSupportNewRoute
+  '/dashboard/orders/': typeof DashboardOrdersIndexRoute
+  '/dashboard/support/': typeof DashboardSupportIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -187,7 +243,6 @@ export interface FileRoutesByTo {
   '/accounts': typeof AccountsRoute
   '/brokers': typeof BrokersRoute
   '/contact': typeof ContactRoute
-  '/dashboard': typeof DashboardRoute
   '/faq': typeof FaqRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/how-it-works': typeof HowItWorksRoute
@@ -201,11 +256,19 @@ export interface FileRoutesByTo {
   '/checkout/deposit': typeof CheckoutDepositRoute
   '/checkout/details': typeof CheckoutDetailsRoute
   '/checkout/payment': typeof CheckoutPaymentRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/security': typeof DashboardSecurityRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/refund': typeof LegalRefundRoute
   '/legal/risk': typeof LegalRiskRoute
   '/legal/terms': typeof LegalTermsRoute
+  '/dashboard': typeof DashboardIndexRoute
+  '/dashboard/orders/$id': typeof DashboardOrdersIdRoute
+  '/dashboard/support/$id': typeof DashboardSupportIdRoute
+  '/dashboard/support/new': typeof DashboardSupportNewRoute
+  '/dashboard/orders': typeof DashboardOrdersIndexRoute
+  '/dashboard/support': typeof DashboardSupportIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -214,7 +277,7 @@ export interface FileRoutesById {
   '/accounts': typeof AccountsRoute
   '/brokers': typeof BrokersRoute
   '/contact': typeof ContactRoute
-  '/dashboard': typeof DashboardRoute
+  '/dashboard': typeof DashboardRouteWithChildren
   '/faq': typeof FaqRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/how-it-works': typeof HowItWorksRoute
@@ -228,11 +291,19 @@ export interface FileRoutesById {
   '/checkout/deposit': typeof CheckoutDepositRoute
   '/checkout/details': typeof CheckoutDetailsRoute
   '/checkout/payment': typeof CheckoutPaymentRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/security': typeof DashboardSecurityRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/refund': typeof LegalRefundRoute
   '/legal/risk': typeof LegalRiskRoute
   '/legal/terms': typeof LegalTermsRoute
+  '/dashboard/': typeof DashboardIndexRoute
+  '/dashboard/orders/$id': typeof DashboardOrdersIdRoute
+  '/dashboard/support/$id': typeof DashboardSupportIdRoute
+  '/dashboard/support/new': typeof DashboardSupportNewRoute
+  '/dashboard/orders/': typeof DashboardOrdersIndexRoute
+  '/dashboard/support/': typeof DashboardSupportIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -256,11 +327,19 @@ export interface FileRouteTypes {
     | '/checkout/deposit'
     | '/checkout/details'
     | '/checkout/payment'
+    | '/dashboard/profile'
+    | '/dashboard/security'
     | '/legal/cookies'
     | '/legal/privacy'
     | '/legal/refund'
     | '/legal/risk'
     | '/legal/terms'
+    | '/dashboard/'
+    | '/dashboard/orders/$id'
+    | '/dashboard/support/$id'
+    | '/dashboard/support/new'
+    | '/dashboard/orders/'
+    | '/dashboard/support/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -268,7 +347,6 @@ export interface FileRouteTypes {
     | '/accounts'
     | '/brokers'
     | '/contact'
-    | '/dashboard'
     | '/faq'
     | '/forgot-password'
     | '/how-it-works'
@@ -282,11 +360,19 @@ export interface FileRouteTypes {
     | '/checkout/deposit'
     | '/checkout/details'
     | '/checkout/payment'
+    | '/dashboard/profile'
+    | '/dashboard/security'
     | '/legal/cookies'
     | '/legal/privacy'
     | '/legal/refund'
     | '/legal/risk'
     | '/legal/terms'
+    | '/dashboard'
+    | '/dashboard/orders/$id'
+    | '/dashboard/support/$id'
+    | '/dashboard/support/new'
+    | '/dashboard/orders'
+    | '/dashboard/support'
   id:
     | '__root__'
     | '/'
@@ -308,11 +394,19 @@ export interface FileRouteTypes {
     | '/checkout/deposit'
     | '/checkout/details'
     | '/checkout/payment'
+    | '/dashboard/profile'
+    | '/dashboard/security'
     | '/legal/cookies'
     | '/legal/privacy'
     | '/legal/refund'
     | '/legal/risk'
     | '/legal/terms'
+    | '/dashboard/'
+    | '/dashboard/orders/$id'
+    | '/dashboard/support/$id'
+    | '/dashboard/support/new'
+    | '/dashboard/orders/'
+    | '/dashboard/support/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -321,7 +415,7 @@ export interface RootRouteChildren {
   AccountsRoute: typeof AccountsRoute
   BrokersRoute: typeof BrokersRoute
   ContactRoute: typeof ContactRoute
-  DashboardRoute: typeof DashboardRoute
+  DashboardRoute: typeof DashboardRouteWithChildren
   FaqRoute: typeof FaqRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   HowItWorksRoute: typeof HowItWorksRoute
@@ -477,6 +571,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CheckoutPaymentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/profile': {
+      id: '/dashboard/profile'
+      path: '/profile'
+      fullPath: '/dashboard/profile'
+      preLoaderRoute: typeof DashboardProfileRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/security': {
+      id: '/dashboard/security'
+      path: '/security'
+      fullPath: '/dashboard/security'
+      preLoaderRoute: typeof DashboardSecurityRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/legal/cookies': {
       id: '/legal/cookies'
       path: '/legal/cookies'
@@ -512,8 +627,69 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalTermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/orders/': {
+      id: '/dashboard/orders/'
+      path: '/orders'
+      fullPath: '/dashboard/orders/'
+      preLoaderRoute: typeof DashboardOrdersIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/orders/$id': {
+      id: '/dashboard/orders/$id'
+      path: '/orders/$id'
+      fullPath: '/dashboard/orders/$id'
+      preLoaderRoute: typeof DashboardOrdersIdRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/support/': {
+      id: '/dashboard/support/'
+      path: '/support'
+      fullPath: '/dashboard/support/'
+      preLoaderRoute: typeof DashboardSupportIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/support/$id': {
+      id: '/dashboard/support/$id'
+      path: '/support/$id'
+      fullPath: '/dashboard/support/$id'
+      preLoaderRoute: typeof DashboardSupportIdRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/support/new': {
+      id: '/dashboard/support/new'
+      path: '/support/new'
+      fullPath: '/dashboard/support/new'
+      preLoaderRoute: typeof DashboardSupportNewRouteImport
+      parentRoute: typeof DashboardRoute
+    }
   }
 }
+
+interface DashboardRouteChildren {
+  DashboardProfileRoute: typeof DashboardProfileRoute
+  DashboardSecurityRoute: typeof DashboardSecurityRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+  DashboardOrdersIdRoute: typeof DashboardOrdersIdRoute
+  DashboardSupportIdRoute: typeof DashboardSupportIdRoute
+  DashboardSupportNewRoute: typeof DashboardSupportNewRoute
+  DashboardOrdersIndexRoute: typeof DashboardOrdersIndexRoute
+  DashboardSupportIndexRoute: typeof DashboardSupportIndexRoute
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardProfileRoute: DashboardProfileRoute,
+  DashboardSecurityRoute: DashboardSecurityRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+  DashboardOrdersIdRoute: DashboardOrdersIdRoute,
+  DashboardSupportIdRoute: DashboardSupportIdRoute,
+  DashboardSupportNewRoute: DashboardSupportNewRoute,
+  DashboardOrdersIndexRoute: DashboardOrdersIndexRoute,
+  DashboardSupportIndexRoute: DashboardSupportIndexRoute,
+}
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -521,7 +697,7 @@ const rootRouteChildren: RootRouteChildren = {
   AccountsRoute: AccountsRoute,
   BrokersRoute: BrokersRoute,
   ContactRoute: ContactRoute,
-  DashboardRoute: DashboardRoute,
+  DashboardRoute: DashboardRouteWithChildren,
   FaqRoute: FaqRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
   HowItWorksRoute: HowItWorksRoute,
