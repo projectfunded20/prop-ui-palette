@@ -1,0 +1,2 @@
+import {createFileRoute} from '@tanstack/react-router';import {StatusPage} from '@/components/qxt/legal-status';
+export const Route=createFileRoute('/maintenance')({head:()=>({meta:[{title:'Maintenance — QXT Funded'},{name:'description',content:'QXT Funded scheduled maintenance notice.'},{property:'og:title',content:'Maintenance — QXT Funded'},{property:'og:description',content:'QXT Funded scheduled maintenance notice.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:()=> <StatusPage kind="maintenance"/>});

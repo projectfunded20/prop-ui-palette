@@ -1,0 +1,2 @@
+import {createFileRoute} from '@tanstack/react-router';import {Thanks} from '@/components/qxt/public-pages';
+export const Route=createFileRoute('/thank-you')({head:()=>({meta:[{title:'Thank You — QXT Funded'},{name:'description',content:'Your message has been received by QXT Funded.'},{property:'og:title',content:'Thank You — QXT Funded'},{property:'og:description',content:'Your message has been received by QXT Funded.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:()=> <Thanks/>});
