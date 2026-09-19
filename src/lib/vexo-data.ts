@@ -1,4 +1,3 @@
-import logo from '@/assets/logo.png.asset.json'
 import pocketoption from '@/assets/broker-pocketoption.png.asset.json'
 import quotex from '@/assets/broker-quotex.png.asset.json'
 import binomo from '@/assets/broker-binomo.png.asset.json'
@@ -7,7 +6,7 @@ import tradowix from '@/assets/broker-tradowix.jpg.asset.json'
 import btc from '@/assets/crypto-btc.png.asset.json'
 import eth from '@/assets/crypto-eth.png.asset.json'
 import usdt from '@/assets/crypto-usdt.png.asset.json'
-export const assets={logo:logo.url,pocketoption:pocketoption.url,quotex:quotex.url,binomo:binomo.url,olymptrade:olymptrade.url,tradowix:tradowix.url,btc:btc.url,eth:eth.url,usdt:usdt.url}
+export const assets={pocketoption:pocketoption.url,quotex:quotex.url,binomo:binomo.url,olymptrade:olymptrade.url,tradowix:tradowix.url,btc:btc.url,eth:eth.url,usdt:usdt.url}
 export type Plan={size:number;price:number;dailyLoss:number;split:number;type:'instant'|'challenge';popular?:boolean;profitTarget?:number;drawdown?:number}
 export const instantPlans:Plan[]=[{size:3000,price:70,dailyLoss:700,split:92,type:'instant'},{size:5000,price:116,dailyLoss:1167,split:92,type:'instant'},{size:8000,price:186,dailyLoss:1867,split:92,type:'instant'},{size:11000,price:256,dailyLoss:2567,split:92,type:'instant'},{size:15000,price:349,dailyLoss:3500,split:92,type:'instant'},{size:20000,price:466,dailyLoss:4667,split:92,type:'instant',popular:true},{size:25000,price:582,dailyLoss:5833,split:92,type:'instant'},{size:35000,price:815,dailyLoss:8167,split:92,type:'instant'},{size:50000,price:1165,dailyLoss:11667,split:92,type:'instant'}]
 export const challengePlans:Plan[]=[{size:3000,price:48,profitTarget:1200,dailyLoss:900,drawdown:2000,split:92,type:'challenge'},{size:5000,price:81,profitTarget:2000,dailyLoss:1500,drawdown:3333,split:92,type:'challenge'},{size:8000,price:129,profitTarget:3200,dailyLoss:2400,drawdown:5333,split:92,type:'challenge',popular:true},{size:11000,price:178,profitTarget:4400,dailyLoss:3300,drawdown:7333,split:92,type:'challenge'},{size:25000,price:311,profitTarget:10000,dailyLoss:7500,drawdown:16667,split:92,type:'challenge'},{size:50000,price:484,profitTarget:20000,dailyLoss:15000,drawdown:33333,split:92,type:'challenge'}]
