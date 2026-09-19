@@ -11,7 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { StatusPage } from "../components/qxt/legal-status";
+import { StatusPage } from "../components/vexo/legal-status";
 
 function NotFoundComponent() {
   return <StatusPage kind="404" />;
@@ -60,10 +60,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "QXT Funded — Trade Funded Accounts" },
-      { name: "description", content: "QXT Funded simulated trading evaluations and funded account opportunities." },
-      { name: "author", content: "QXT Funded" },
-      { property: "og:title", content: "QXT Funded — Trade Funded Accounts" },
+      { title: "VEXO FUNDED — Trade Funded Accounts" },
+      { name: "description", content: "VEXO FUNDED simulated trading evaluations and funded account opportunities." },
+      { name: "author", content: "VEXO FUNDED" },
+      { property: "og:title", content: "VEXO FUNDED — Trade Funded Accounts" },
       { property: "og:description", content: "Access simulated trading evaluations and funded account opportunities." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -73,10 +73,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" },
     ],
   }),
   shellComponent: RootShell,
