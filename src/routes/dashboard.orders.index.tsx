@@ -1,0 +1,2 @@
+import {createFileRoute} from '@tanstack/react-router';import {Orders} from '@/components/qxt/dashboard-pages';
+export const Route=createFileRoute('/dashboard/orders/')({head:()=>({meta:[{title:'Orders — QXT Funded'},{name:'description',content:'Track QXT Funded account purchases and delivery status.'},{property:'og:title',content:'Orders — QXT Funded'},{property:'og:description',content:'Track QXT Funded account purchases and delivery status.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:Orders});
