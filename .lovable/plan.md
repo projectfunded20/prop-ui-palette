@@ -45,3 +45,4 @@ Rebuild the uploaded website’s complete visible experience in this Lovable pro
 - Check every route and major interaction in the running preview.
 - Verify desktop and mobile layouts, navigation, drawers, tables, forms, checkout steps, dashboard states, and no-overlap behavior.
 - Confirm the final build is clean and that no backend, authentication, payment, database, webhook, email, or secret dependency remains.
+
