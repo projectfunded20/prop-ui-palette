@@ -1,7 +1,7 @@
 import { Link, Outlet } from '@tanstack/react-router'
 import { useEffect, useState, type ReactNode } from 'react'
 import { Bell, Cookie, LayoutDashboard, LifeBuoy, ListOrdered, LogOut, Menu, ShieldCheck, User, X } from 'lucide-react'
-import { Badge, Button, Logo, cn } from './ui'
+import { Button, Logo, cn } from './ui'
 import { LiveSupport } from './live-support'
 
 const links = [['/accounts','Accounts'],['/brokers','Brokers'],['/how-it-works','How It Works'],['/faq','FAQ'],['/reviews','Reviews'],['/support','Support']] as const
