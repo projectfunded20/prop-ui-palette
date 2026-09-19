@@ -1,2 +1,0 @@
-import {createFileRoute} from '@tanstack/react-router';import {Profile} from '@/components/vexo/dashboard-pages';
-export const Route=createFileRoute('/dashboard/profile')({head:()=>({meta:[{title:'Profile — VEXO FUNDED'},{name:'description',content:'Preview VEXO FUNDED profile settings.'},{property:'og:title',content:'Profile — VEXO FUNDED'},{property:'og:description',content:'Preview VEXO FUNDED profile settings.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:Profile});

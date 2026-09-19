@@ -55,18 +55,60 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+export const SITE_URL = "https://project--d4b6037e-b2d8-4160-a495-87273e6609ed.lovable.app";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "VEXO FUNDED",
+  alternateName: "VEXO",
+  url: SITE_URL,
+  logo: `${SITE_URL}/favicon.svg`,
+  image: `${SITE_URL}/og-cover.jpg`,
+  description:
+    "VEXO FUNDED is a proprietary trading firm offering instant funding and two-step evaluation accounts from $3,000 to $50,000 with profit splits up to 92%.",
+  sameAs: [] as string[],
+  contactPoint: [
+    { "@type": "ContactPoint", contactType: "customer support", availableLanguage: ["English"], url: `${SITE_URL}/support` },
+  ],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "VEXO FUNDED",
+  url: SITE_URL,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${SITE_URL}/faq?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
+};
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "VEXO FUNDED — Trade Funded Accounts" },
-      { name: "description", content: "VEXO FUNDED simulated trading evaluations and funded account opportunities." },
+      { title: "VEXO FUNDED — Funded Trading Accounts up to $50,000" },
+      {
+        name: "description",
+        content:
+          "VEXO FUNDED gives disciplined traders instant funding and two-step evaluations from $3,000 to $50,000, with clear rules and profit splits up to 92%.",
+      },
       { name: "author", content: "VEXO FUNDED" },
-      { property: "og:title", content: "VEXO FUNDED — Trade Funded Accounts" },
-      { property: "og:description", content: "Access simulated trading evaluations and funded account opportunities." },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
+      { name: "theme-color", content: "#0B1112" },
+      { property: "og:site_name", content: "VEXO FUNDED" },
+      { property: "og:title", content: "VEXO FUNDED — Funded Trading Accounts up to $50,000" },
+      { property: "og:description", content: "Instant funding and two-step evaluations with transparent rules and up to 92% profit split." },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:image", content: `${SITE_URL}/og-cover.jpg` },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "VEXO FUNDED — Funded Trading Accounts up to $50,000" },
+      { name: "twitter:description", content: "Instant funding and two-step evaluations with transparent rules and up to 92% profit split." },
+      { name: "twitter:image", content: `${SITE_URL}/og-cover.jpg` },
     ],
     links: [
       {
@@ -74,9 +116,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "apple-touch-icon", href: "/favicon.svg" },
+      { rel: "canonical", href: SITE_URL },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" },
+    ],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify(organizationSchema) },
+      { type: "application/ld+json", children: JSON.stringify(websiteSchema) },
     ],
   }),
   shellComponent: RootShell,
@@ -101,6 +149,20 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+
+  useEffect(() => {
+    let cancelled = false;
+    void import("@/integrations/supabase/client").then(({ supabase }) => {
+      if (cancelled) return;
+      supabase.auth.onAuthStateChange((event) => {
+        if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
+        router.invalidate();
+        if (event !== "SIGNED_OUT") queryClient.invalidateQueries();
+      });
+    });
+    return () => { cancelled = true; };
+  }, [router, queryClient]);
 
   return (
     <QueryClientProvider client={queryClient}>

@@ -11,36 +11,37 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as R500RouteImport } from './routes/500'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AccountsRouteImport } from './routes/accounts'
 import { Route as BrokersRouteImport } from './routes/brokers'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as MaintenanceRouteImport } from './routes/maintenance'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as SupportRouteImport } from './routes/support'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
-import { Route as VerifyEmailRouteImport } from './routes/verify-email'
-import { Route as CheckoutDepositRouteImport } from './routes/checkout.deposit'
-import { Route as CheckoutDetailsRouteImport } from './routes/checkout.details'
-import { Route as CheckoutPaymentRouteImport } from './routes/checkout.payment'
-import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
-import { Route as DashboardProfileRouteImport } from './routes/dashboard.profile'
-import { Route as DashboardSecurityRouteImport } from './routes/dashboard.security'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as LegalCookiesRouteImport } from './routes/legal.cookies'
 import { Route as LegalPrivacyRouteImport } from './routes/legal.privacy'
 import { Route as LegalRefundRouteImport } from './routes/legal.refund'
 import { Route as LegalRiskRouteImport } from './routes/legal.risk'
 import { Route as LegalTermsRouteImport } from './routes/legal.terms'
-import { Route as DashboardOrdersIndexRouteImport } from './routes/dashboard.orders.index'
-import { Route as DashboardOrdersIdRouteImport } from './routes/dashboard.orders.$id'
-import { Route as DashboardSupportIndexRouteImport } from './routes/dashboard.support.index'
-import { Route as DashboardSupportIdRouteImport } from './routes/dashboard.support.$id'
-import { Route as DashboardSupportNewRouteImport } from './routes/dashboard.support.new'
+import { Route as AuthenticatedCheckoutDepositRouteImport } from './routes/_authenticated/checkout.deposit'
+import { Route as AuthenticatedCheckoutDetailsRouteImport } from './routes/_authenticated/checkout.details'
+import { Route as AuthenticatedCheckoutPaymentRouteImport } from './routes/_authenticated/checkout.payment'
+import { Route as AuthenticatedDashboardIndexRouteImport } from './routes/_authenticated/dashboard.index'
+import { Route as AuthenticatedDashboardProfileRouteImport } from './routes/_authenticated/dashboard.profile'
+import { Route as AuthenticatedDashboardSecurityRouteImport } from './routes/_authenticated/dashboard.security'
+import { Route as AuthenticatedDashboardOrdersIndexRouteImport } from './routes/_authenticated/dashboard.orders.index'
+import { Route as AuthenticatedDashboardOrdersIdRouteImport } from './routes/_authenticated/dashboard.orders.$id'
+import { Route as AuthenticatedDashboardSupportIndexRouteImport } from './routes/_authenticated/dashboard.support.index'
+import { Route as AuthenticatedDashboardSupportIdRouteImport } from './routes/_authenticated/dashboard.support.$id'
+import { Route as AuthenticatedDashboardSupportNewRouteImport } from './routes/_authenticated/dashboard.support.new'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -50,6 +51,10 @@ const IndexRoute = IndexRouteImport.update({
 const R500Route = R500RouteImport.update({
   id: '/500',
   path: '/500',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AccountsRoute = AccountsRouteImport.update({
@@ -65,11 +70,6 @@ const BrokersRoute = BrokersRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DashboardRoute = DashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -97,6 +97,11 @@ const MaintenanceRoute = MaintenanceRouteImport.update({
   path: '/maintenance',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewsRoute = ReviewsRouteImport.update({
   id: '/reviews',
   path: '/reviews',
@@ -117,40 +122,10 @@ const ThankYouRoute = ThankYouRouteImport.update({
   path: '/thank-you',
   getParentRoute: () => rootRouteImport,
 } as any)
-const VerifyEmailRoute = VerifyEmailRouteImport.update({
-  id: '/verify-email',
-  path: '/verify-email',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CheckoutDepositRoute = CheckoutDepositRouteImport.update({
-  id: '/checkout/deposit',
-  path: '/checkout/deposit',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CheckoutDetailsRoute = CheckoutDetailsRouteImport.update({
-  id: '/checkout/details',
-  path: '/checkout/details',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CheckoutPaymentRoute = CheckoutPaymentRouteImport.update({
-  id: '/checkout/payment',
-  path: '/checkout/payment',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DashboardIndexRoute = DashboardIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => DashboardRoute,
-} as any)
-const DashboardProfileRoute = DashboardProfileRouteImport.update({
-  id: '/profile',
-  path: '/profile',
-  getParentRoute: () => DashboardRoute,
-} as any)
-const DashboardSecurityRoute = DashboardSecurityRouteImport.update({
-  id: '/security',
-  path: '/security',
-  getParentRoute: () => DashboardRoute,
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const LegalCookiesRoute = LegalCookiesRouteImport.update({
   id: '/legal/cookies',
@@ -177,31 +152,72 @@ const LegalTermsRoute = LegalTermsRouteImport.update({
   path: '/legal/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DashboardOrdersIndexRoute = DashboardOrdersIndexRouteImport.update({
-  id: '/orders/',
-  path: '/orders/',
-  getParentRoute: () => DashboardRoute,
-} as any)
-const DashboardOrdersIdRoute = DashboardOrdersIdRouteImport.update({
-  id: '/orders/$id',
-  path: '/orders/$id',
-  getParentRoute: () => DashboardRoute,
-} as any)
-const DashboardSupportIndexRoute = DashboardSupportIndexRouteImport.update({
-  id: '/support/',
-  path: '/support/',
-  getParentRoute: () => DashboardRoute,
-} as any)
-const DashboardSupportIdRoute = DashboardSupportIdRouteImport.update({
-  id: '/support/$id',
-  path: '/support/$id',
-  getParentRoute: () => DashboardRoute,
-} as any)
-const DashboardSupportNewRoute = DashboardSupportNewRouteImport.update({
-  id: '/support/new',
-  path: '/support/new',
-  getParentRoute: () => DashboardRoute,
-} as any)
+const AuthenticatedCheckoutDepositRoute =
+  AuthenticatedCheckoutDepositRouteImport.update({
+    id: '/checkout/deposit',
+    path: '/checkout/deposit',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedCheckoutDetailsRoute =
+  AuthenticatedCheckoutDetailsRouteImport.update({
+    id: '/checkout/details',
+    path: '/checkout/details',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedCheckoutPaymentRoute =
+  AuthenticatedCheckoutPaymentRouteImport.update({
+    id: '/checkout/payment',
+    path: '/checkout/payment',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedDashboardIndexRoute =
+  AuthenticatedDashboardIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
+const AuthenticatedDashboardProfileRoute =
+  AuthenticatedDashboardProfileRouteImport.update({
+    id: '/profile',
+    path: '/profile',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
+const AuthenticatedDashboardSecurityRoute =
+  AuthenticatedDashboardSecurityRouteImport.update({
+    id: '/security',
+    path: '/security',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
+const AuthenticatedDashboardOrdersIndexRoute =
+  AuthenticatedDashboardOrdersIndexRouteImport.update({
+    id: '/orders/',
+    path: '/orders/',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
+const AuthenticatedDashboardOrdersIdRoute =
+  AuthenticatedDashboardOrdersIdRouteImport.update({
+    id: '/orders/$id',
+    path: '/orders/$id',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
+const AuthenticatedDashboardSupportIndexRoute =
+  AuthenticatedDashboardSupportIndexRouteImport.update({
+    id: '/support/',
+    path: '/support/',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
+const AuthenticatedDashboardSupportIdRoute =
+  AuthenticatedDashboardSupportIdRouteImport.update({
+    id: '/support/$id',
+    path: '/support/$id',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
+const AuthenticatedDashboardSupportNewRoute =
+  AuthenticatedDashboardSupportNewRouteImport.update({
+    id: '/support/new',
+    path: '/support/new',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -209,33 +225,33 @@ export interface FileRoutesByFullPath {
   '/accounts': typeof AccountsRoute
   '/brokers': typeof BrokersRoute
   '/contact': typeof ContactRoute
-  '/dashboard': typeof DashboardRouteWithChildren
   '/faq': typeof FaqRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/maintenance': typeof MaintenanceRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/reviews': typeof ReviewsRoute
   '/signup': typeof SignupRoute
   '/support': typeof SupportRoute
   '/thank-you': typeof ThankYouRoute
-  '/verify-email': typeof VerifyEmailRoute
-  '/checkout/deposit': typeof CheckoutDepositRoute
-  '/checkout/details': typeof CheckoutDetailsRoute
-  '/checkout/payment': typeof CheckoutPaymentRoute
-  '/dashboard/profile': typeof DashboardProfileRoute
-  '/dashboard/security': typeof DashboardSecurityRoute
+  '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/refund': typeof LegalRefundRoute
   '/legal/risk': typeof LegalRiskRoute
   '/legal/terms': typeof LegalTermsRoute
-  '/dashboard/': typeof DashboardIndexRoute
-  '/dashboard/orders/$id': typeof DashboardOrdersIdRoute
-  '/dashboard/support/$id': typeof DashboardSupportIdRoute
-  '/dashboard/support/new': typeof DashboardSupportNewRoute
-  '/dashboard/orders/': typeof DashboardOrdersIndexRoute
-  '/dashboard/support/': typeof DashboardSupportIndexRoute
+  '/checkout/deposit': typeof AuthenticatedCheckoutDepositRoute
+  '/checkout/details': typeof AuthenticatedCheckoutDetailsRoute
+  '/checkout/payment': typeof AuthenticatedCheckoutPaymentRoute
+  '/dashboard/profile': typeof AuthenticatedDashboardProfileRoute
+  '/dashboard/security': typeof AuthenticatedDashboardSecurityRoute
+  '/dashboard/': typeof AuthenticatedDashboardIndexRoute
+  '/dashboard/orders/$id': typeof AuthenticatedDashboardOrdersIdRoute
+  '/dashboard/support/$id': typeof AuthenticatedDashboardSupportIdRoute
+  '/dashboard/support/new': typeof AuthenticatedDashboardSupportNewRoute
+  '/dashboard/orders/': typeof AuthenticatedDashboardOrdersIndexRoute
+  '/dashboard/support/': typeof AuthenticatedDashboardSupportIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -248,62 +264,63 @@ export interface FileRoutesByTo {
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/maintenance': typeof MaintenanceRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/reviews': typeof ReviewsRoute
   '/signup': typeof SignupRoute
   '/support': typeof SupportRoute
   '/thank-you': typeof ThankYouRoute
-  '/verify-email': typeof VerifyEmailRoute
-  '/checkout/deposit': typeof CheckoutDepositRoute
-  '/checkout/details': typeof CheckoutDetailsRoute
-  '/checkout/payment': typeof CheckoutPaymentRoute
-  '/dashboard/profile': typeof DashboardProfileRoute
-  '/dashboard/security': typeof DashboardSecurityRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/refund': typeof LegalRefundRoute
   '/legal/risk': typeof LegalRiskRoute
   '/legal/terms': typeof LegalTermsRoute
-  '/dashboard': typeof DashboardIndexRoute
-  '/dashboard/orders/$id': typeof DashboardOrdersIdRoute
-  '/dashboard/support/$id': typeof DashboardSupportIdRoute
-  '/dashboard/support/new': typeof DashboardSupportNewRoute
-  '/dashboard/orders': typeof DashboardOrdersIndexRoute
-  '/dashboard/support': typeof DashboardSupportIndexRoute
+  '/checkout/deposit': typeof AuthenticatedCheckoutDepositRoute
+  '/checkout/details': typeof AuthenticatedCheckoutDetailsRoute
+  '/checkout/payment': typeof AuthenticatedCheckoutPaymentRoute
+  '/dashboard/profile': typeof AuthenticatedDashboardProfileRoute
+  '/dashboard/security': typeof AuthenticatedDashboardSecurityRoute
+  '/dashboard': typeof AuthenticatedDashboardIndexRoute
+  '/dashboard/orders/$id': typeof AuthenticatedDashboardOrdersIdRoute
+  '/dashboard/support/$id': typeof AuthenticatedDashboardSupportIdRoute
+  '/dashboard/support/new': typeof AuthenticatedDashboardSupportNewRoute
+  '/dashboard/orders': typeof AuthenticatedDashboardOrdersIndexRoute
+  '/dashboard/support': typeof AuthenticatedDashboardSupportIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/500': typeof R500Route
   '/accounts': typeof AccountsRoute
   '/brokers': typeof BrokersRoute
   '/contact': typeof ContactRoute
-  '/dashboard': typeof DashboardRouteWithChildren
   '/faq': typeof FaqRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/maintenance': typeof MaintenanceRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/reviews': typeof ReviewsRoute
   '/signup': typeof SignupRoute
   '/support': typeof SupportRoute
   '/thank-you': typeof ThankYouRoute
-  '/verify-email': typeof VerifyEmailRoute
-  '/checkout/deposit': typeof CheckoutDepositRoute
-  '/checkout/details': typeof CheckoutDetailsRoute
-  '/checkout/payment': typeof CheckoutPaymentRoute
-  '/dashboard/profile': typeof DashboardProfileRoute
-  '/dashboard/security': typeof DashboardSecurityRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRouteWithChildren
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/refund': typeof LegalRefundRoute
   '/legal/risk': typeof LegalRiskRoute
   '/legal/terms': typeof LegalTermsRoute
-  '/dashboard/': typeof DashboardIndexRoute
-  '/dashboard/orders/$id': typeof DashboardOrdersIdRoute
-  '/dashboard/support/$id': typeof DashboardSupportIdRoute
-  '/dashboard/support/new': typeof DashboardSupportNewRoute
-  '/dashboard/orders/': typeof DashboardOrdersIndexRoute
-  '/dashboard/support/': typeof DashboardSupportIndexRoute
+  '/_authenticated/checkout/deposit': typeof AuthenticatedCheckoutDepositRoute
+  '/_authenticated/checkout/details': typeof AuthenticatedCheckoutDetailsRoute
+  '/_authenticated/checkout/payment': typeof AuthenticatedCheckoutPaymentRoute
+  '/_authenticated/dashboard/profile': typeof AuthenticatedDashboardProfileRoute
+  '/_authenticated/dashboard/security': typeof AuthenticatedDashboardSecurityRoute
+  '/_authenticated/dashboard/': typeof AuthenticatedDashboardIndexRoute
+  '/_authenticated/dashboard/orders/$id': typeof AuthenticatedDashboardOrdersIdRoute
+  '/_authenticated/dashboard/support/$id': typeof AuthenticatedDashboardSupportIdRoute
+  '/_authenticated/dashboard/support/new': typeof AuthenticatedDashboardSupportNewRoute
+  '/_authenticated/dashboard/orders/': typeof AuthenticatedDashboardOrdersIndexRoute
+  '/_authenticated/dashboard/support/': typeof AuthenticatedDashboardSupportIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -313,27 +330,27 @@ export interface FileRouteTypes {
     | '/accounts'
     | '/brokers'
     | '/contact'
-    | '/dashboard'
     | '/faq'
     | '/forgot-password'
     | '/how-it-works'
     | '/login'
     | '/maintenance'
+    | '/reset-password'
     | '/reviews'
     | '/signup'
     | '/support'
     | '/thank-you'
-    | '/verify-email'
-    | '/checkout/deposit'
-    | '/checkout/details'
-    | '/checkout/payment'
-    | '/dashboard/profile'
-    | '/dashboard/security'
+    | '/dashboard'
     | '/legal/cookies'
     | '/legal/privacy'
     | '/legal/refund'
     | '/legal/risk'
     | '/legal/terms'
+    | '/checkout/deposit'
+    | '/checkout/details'
+    | '/checkout/payment'
+    | '/dashboard/profile'
+    | '/dashboard/security'
     | '/dashboard/'
     | '/dashboard/orders/$id'
     | '/dashboard/support/$id'
@@ -352,21 +369,21 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/login'
     | '/maintenance'
+    | '/reset-password'
     | '/reviews'
     | '/signup'
     | '/support'
     | '/thank-you'
-    | '/verify-email'
-    | '/checkout/deposit'
-    | '/checkout/details'
-    | '/checkout/payment'
-    | '/dashboard/profile'
-    | '/dashboard/security'
     | '/legal/cookies'
     | '/legal/privacy'
     | '/legal/refund'
     | '/legal/risk'
     | '/legal/terms'
+    | '/checkout/deposit'
+    | '/checkout/details'
+    | '/checkout/payment'
+    | '/dashboard/profile'
+    | '/dashboard/security'
     | '/dashboard'
     | '/dashboard/orders/$id'
     | '/dashboard/support/$id'
@@ -376,59 +393,57 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/500'
     | '/accounts'
     | '/brokers'
     | '/contact'
-    | '/dashboard'
     | '/faq'
     | '/forgot-password'
     | '/how-it-works'
     | '/login'
     | '/maintenance'
+    | '/reset-password'
     | '/reviews'
     | '/signup'
     | '/support'
     | '/thank-you'
-    | '/verify-email'
-    | '/checkout/deposit'
-    | '/checkout/details'
-    | '/checkout/payment'
-    | '/dashboard/profile'
-    | '/dashboard/security'
+    | '/_authenticated/dashboard'
     | '/legal/cookies'
     | '/legal/privacy'
     | '/legal/refund'
     | '/legal/risk'
     | '/legal/terms'
-    | '/dashboard/'
-    | '/dashboard/orders/$id'
-    | '/dashboard/support/$id'
-    | '/dashboard/support/new'
-    | '/dashboard/orders/'
-    | '/dashboard/support/'
+    | '/_authenticated/checkout/deposit'
+    | '/_authenticated/checkout/details'
+    | '/_authenticated/checkout/payment'
+    | '/_authenticated/dashboard/profile'
+    | '/_authenticated/dashboard/security'
+    | '/_authenticated/dashboard/'
+    | '/_authenticated/dashboard/orders/$id'
+    | '/_authenticated/dashboard/support/$id'
+    | '/_authenticated/dashboard/support/new'
+    | '/_authenticated/dashboard/orders/'
+    | '/_authenticated/dashboard/support/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   R500Route: typeof R500Route
   AccountsRoute: typeof AccountsRoute
   BrokersRoute: typeof BrokersRoute
   ContactRoute: typeof ContactRoute
-  DashboardRoute: typeof DashboardRouteWithChildren
   FaqRoute: typeof FaqRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   HowItWorksRoute: typeof HowItWorksRoute
   LoginRoute: typeof LoginRoute
   MaintenanceRoute: typeof MaintenanceRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   ReviewsRoute: typeof ReviewsRoute
   SignupRoute: typeof SignupRoute
   SupportRoute: typeof SupportRoute
   ThankYouRoute: typeof ThankYouRoute
-  VerifyEmailRoute: typeof VerifyEmailRoute
-  CheckoutDepositRoute: typeof CheckoutDepositRoute
-  CheckoutDetailsRoute: typeof CheckoutDetailsRoute
-  CheckoutPaymentRoute: typeof CheckoutPaymentRoute
   LegalCookiesRoute: typeof LegalCookiesRoute
   LegalPrivacyRoute: typeof LegalPrivacyRoute
   LegalRefundRoute: typeof LegalRefundRoute
@@ -452,6 +467,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof R500RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/accounts': {
       id: '/accounts'
       path: '/accounts'
@@ -471,13 +493,6 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dashboard': {
-      id: '/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -515,6 +530,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MaintenanceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reviews': {
       id: '/reviews'
       path: '/reviews'
@@ -543,54 +565,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ThankYouRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/verify-email': {
-      id: '/verify-email'
-      path: '/verify-email'
-      fullPath: '/verify-email'
-      preLoaderRoute: typeof VerifyEmailRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/checkout/deposit': {
-      id: '/checkout/deposit'
-      path: '/checkout/deposit'
-      fullPath: '/checkout/deposit'
-      preLoaderRoute: typeof CheckoutDepositRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/checkout/details': {
-      id: '/checkout/details'
-      path: '/checkout/details'
-      fullPath: '/checkout/details'
-      preLoaderRoute: typeof CheckoutDetailsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/checkout/payment': {
-      id: '/checkout/payment'
-      path: '/checkout/payment'
-      fullPath: '/checkout/payment'
-      preLoaderRoute: typeof CheckoutPaymentRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dashboard/': {
-      id: '/dashboard/'
-      path: '/'
-      fullPath: '/dashboard/'
-      preLoaderRoute: typeof DashboardIndexRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/dashboard/profile': {
-      id: '/dashboard/profile'
-      path: '/profile'
-      fullPath: '/dashboard/profile'
-      preLoaderRoute: typeof DashboardProfileRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/dashboard/security': {
-      id: '/dashboard/security'
-      path: '/security'
-      fullPath: '/dashboard/security'
-      preLoaderRoute: typeof DashboardSecurityRouteImport
-      parentRoute: typeof DashboardRoute
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/legal/cookies': {
       id: '/legal/cookies'
@@ -627,90 +607,151 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalTermsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/dashboard/orders/': {
-      id: '/dashboard/orders/'
+    '/_authenticated/checkout/deposit': {
+      id: '/_authenticated/checkout/deposit'
+      path: '/checkout/deposit'
+      fullPath: '/checkout/deposit'
+      preLoaderRoute: typeof AuthenticatedCheckoutDepositRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/checkout/details': {
+      id: '/_authenticated/checkout/details'
+      path: '/checkout/details'
+      fullPath: '/checkout/details'
+      preLoaderRoute: typeof AuthenticatedCheckoutDetailsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/checkout/payment': {
+      id: '/_authenticated/checkout/payment'
+      path: '/checkout/payment'
+      fullPath: '/checkout/payment'
+      preLoaderRoute: typeof AuthenticatedCheckoutPaymentRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/dashboard/': {
+      id: '/_authenticated/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof AuthenticatedDashboardIndexRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
+    }
+    '/_authenticated/dashboard/profile': {
+      id: '/_authenticated/dashboard/profile'
+      path: '/profile'
+      fullPath: '/dashboard/profile'
+      preLoaderRoute: typeof AuthenticatedDashboardProfileRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
+    }
+    '/_authenticated/dashboard/security': {
+      id: '/_authenticated/dashboard/security'
+      path: '/security'
+      fullPath: '/dashboard/security'
+      preLoaderRoute: typeof AuthenticatedDashboardSecurityRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
+    }
+    '/_authenticated/dashboard/orders/': {
+      id: '/_authenticated/dashboard/orders/'
       path: '/orders'
       fullPath: '/dashboard/orders/'
-      preLoaderRoute: typeof DashboardOrdersIndexRouteImport
-      parentRoute: typeof DashboardRoute
+      preLoaderRoute: typeof AuthenticatedDashboardOrdersIndexRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
     }
-    '/dashboard/orders/$id': {
-      id: '/dashboard/orders/$id'
+    '/_authenticated/dashboard/orders/$id': {
+      id: '/_authenticated/dashboard/orders/$id'
       path: '/orders/$id'
       fullPath: '/dashboard/orders/$id'
-      preLoaderRoute: typeof DashboardOrdersIdRouteImport
-      parentRoute: typeof DashboardRoute
+      preLoaderRoute: typeof AuthenticatedDashboardOrdersIdRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
     }
-    '/dashboard/support/': {
-      id: '/dashboard/support/'
+    '/_authenticated/dashboard/support/': {
+      id: '/_authenticated/dashboard/support/'
       path: '/support'
       fullPath: '/dashboard/support/'
-      preLoaderRoute: typeof DashboardSupportIndexRouteImport
-      parentRoute: typeof DashboardRoute
+      preLoaderRoute: typeof AuthenticatedDashboardSupportIndexRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
     }
-    '/dashboard/support/$id': {
-      id: '/dashboard/support/$id'
+    '/_authenticated/dashboard/support/$id': {
+      id: '/_authenticated/dashboard/support/$id'
       path: '/support/$id'
       fullPath: '/dashboard/support/$id'
-      preLoaderRoute: typeof DashboardSupportIdRouteImport
-      parentRoute: typeof DashboardRoute
+      preLoaderRoute: typeof AuthenticatedDashboardSupportIdRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
     }
-    '/dashboard/support/new': {
-      id: '/dashboard/support/new'
+    '/_authenticated/dashboard/support/new': {
+      id: '/_authenticated/dashboard/support/new'
       path: '/support/new'
       fullPath: '/dashboard/support/new'
-      preLoaderRoute: typeof DashboardSupportNewRouteImport
-      parentRoute: typeof DashboardRoute
+      preLoaderRoute: typeof AuthenticatedDashboardSupportNewRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
     }
   }
 }
 
-interface DashboardRouteChildren {
-  DashboardProfileRoute: typeof DashboardProfileRoute
-  DashboardSecurityRoute: typeof DashboardSecurityRoute
-  DashboardIndexRoute: typeof DashboardIndexRoute
-  DashboardOrdersIdRoute: typeof DashboardOrdersIdRoute
-  DashboardSupportIdRoute: typeof DashboardSupportIdRoute
-  DashboardSupportNewRoute: typeof DashboardSupportNewRoute
-  DashboardOrdersIndexRoute: typeof DashboardOrdersIndexRoute
-  DashboardSupportIndexRoute: typeof DashboardSupportIndexRoute
+interface AuthenticatedDashboardRouteChildren {
+  AuthenticatedDashboardProfileRoute: typeof AuthenticatedDashboardProfileRoute
+  AuthenticatedDashboardSecurityRoute: typeof AuthenticatedDashboardSecurityRoute
+  AuthenticatedDashboardIndexRoute: typeof AuthenticatedDashboardIndexRoute
+  AuthenticatedDashboardOrdersIdRoute: typeof AuthenticatedDashboardOrdersIdRoute
+  AuthenticatedDashboardSupportIdRoute: typeof AuthenticatedDashboardSupportIdRoute
+  AuthenticatedDashboardSupportNewRoute: typeof AuthenticatedDashboardSupportNewRoute
+  AuthenticatedDashboardOrdersIndexRoute: typeof AuthenticatedDashboardOrdersIndexRoute
+  AuthenticatedDashboardSupportIndexRoute: typeof AuthenticatedDashboardSupportIndexRoute
 }
 
-const DashboardRouteChildren: DashboardRouteChildren = {
-  DashboardProfileRoute: DashboardProfileRoute,
-  DashboardSecurityRoute: DashboardSecurityRoute,
-  DashboardIndexRoute: DashboardIndexRoute,
-  DashboardOrdersIdRoute: DashboardOrdersIdRoute,
-  DashboardSupportIdRoute: DashboardSupportIdRoute,
-  DashboardSupportNewRoute: DashboardSupportNewRoute,
-  DashboardOrdersIndexRoute: DashboardOrdersIndexRoute,
-  DashboardSupportIndexRoute: DashboardSupportIndexRoute,
+const AuthenticatedDashboardRouteChildren: AuthenticatedDashboardRouteChildren =
+  {
+    AuthenticatedDashboardProfileRoute: AuthenticatedDashboardProfileRoute,
+    AuthenticatedDashboardSecurityRoute: AuthenticatedDashboardSecurityRoute,
+    AuthenticatedDashboardIndexRoute: AuthenticatedDashboardIndexRoute,
+    AuthenticatedDashboardOrdersIdRoute: AuthenticatedDashboardOrdersIdRoute,
+    AuthenticatedDashboardSupportIdRoute: AuthenticatedDashboardSupportIdRoute,
+    AuthenticatedDashboardSupportNewRoute:
+      AuthenticatedDashboardSupportNewRoute,
+    AuthenticatedDashboardOrdersIndexRoute:
+      AuthenticatedDashboardOrdersIndexRoute,
+    AuthenticatedDashboardSupportIndexRoute:
+      AuthenticatedDashboardSupportIndexRoute,
+  }
+
+const AuthenticatedDashboardRouteWithChildren =
+  AuthenticatedDashboardRoute._addFileChildren(
+    AuthenticatedDashboardRouteChildren,
+  )
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRouteWithChildren
+  AuthenticatedCheckoutDepositRoute: typeof AuthenticatedCheckoutDepositRoute
+  AuthenticatedCheckoutDetailsRoute: typeof AuthenticatedCheckoutDetailsRoute
+  AuthenticatedCheckoutPaymentRoute: typeof AuthenticatedCheckoutPaymentRoute
 }
 
-const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
-  DashboardRouteChildren,
-)
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRouteWithChildren,
+  AuthenticatedCheckoutDepositRoute: AuthenticatedCheckoutDepositRoute,
+  AuthenticatedCheckoutDetailsRoute: AuthenticatedCheckoutDetailsRoute,
+  AuthenticatedCheckoutPaymentRoute: AuthenticatedCheckoutPaymentRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   R500Route: R500Route,
   AccountsRoute: AccountsRoute,
   BrokersRoute: BrokersRoute,
   ContactRoute: ContactRoute,
-  DashboardRoute: DashboardRouteWithChildren,
   FaqRoute: FaqRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
   HowItWorksRoute: HowItWorksRoute,
   LoginRoute: LoginRoute,
   MaintenanceRoute: MaintenanceRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   ReviewsRoute: ReviewsRoute,
   SignupRoute: SignupRoute,
   SupportRoute: SupportRoute,
   ThankYouRoute: ThankYouRoute,
-  VerifyEmailRoute: VerifyEmailRoute,
-  CheckoutDepositRoute: CheckoutDepositRoute,
-  CheckoutDetailsRoute: CheckoutDetailsRoute,
-  CheckoutPaymentRoute: CheckoutPaymentRoute,
   LegalCookiesRoute: LegalCookiesRoute,
   LegalPrivacyRoute: LegalPrivacyRoute,
   LegalRefundRoute: LegalRefundRoute,
