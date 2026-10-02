@@ -5,8 +5,9 @@ export const effectiveStatus=(o:Pick<OrderRow,'status'|'decision_at'>):OrderStat
 export const reviewCountdown=(o:Pick<OrderRow,'status'|'decision_at'>)=>effectiveStatus(o)!=='pending'?null:`${Math.max(0,Math.ceil((Date.parse(o.decision_at)-Date.now())/60000))} min`
 export const shortDate=(v:string)=>new Date(v).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})
 export const shortTime=(v:string)=>new Date(v).toLocaleString('en-GB',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})
-export async function fetchOrders(){const{data,error}=await supabase.from('orders').select('*').order('created_at',{ascending:false});if(error)throw error;return(data??[]) as OrderRow[]}
-export async function fetchOrder(reference:string){const{data,error}=await supabase.from('orders').select('*').eq('reference',reference).maybeSingle();if(error)throw error;return data as OrderRow|null}
+async function settleExpired(){await supabase.rpc('reject_expired_orders')}
+export async function fetchOrders(){await settleExpired();const{data,error}=await supabase.from('orders').select('*').order('created_at',{ascending:false});if(error)throw error;return(data??[]) as OrderRow[]}
+export async function fetchOrder(reference:string){await settleExpired();const{data,error}=await supabase.from('orders').select('*').eq('reference',reference).maybeSingle();if(error)throw error;return data as OrderRow|null}
 export async function createOrder(input:{account_type:'instant'|'challenge';account_size:number;price:number;broker:string;payment_method:string;coupon?:string|null}){const{data:auth}=await supabase.auth.getUser();if(!auth.user)throw new Error('Sign in before placing an order.');const{data,error}=await supabase.from('orders').insert({...input,user_id:auth.user.id}).select('*').single();if(error)throw error;return data as OrderRow}
 export type TicketRow={id:string;reference:string;subject:string;category:string;priority:string;status:string;created_at:string;updated_at:string}
 export type MessageRow={id:string;author:string;body:string;created_at:string}

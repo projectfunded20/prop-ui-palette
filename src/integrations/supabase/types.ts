@@ -165,7 +165,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      reject_expired_orders: { Args: never; Returns: number }
     }
     Enums: {
       [_ in never]: never

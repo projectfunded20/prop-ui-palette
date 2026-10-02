@@ -8,6 +8,13 @@
       "when": 1789851125584,
       "tag": "0000_vexo_core_schema",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1790950511661,
+      "tag": "0001_rebuild_vexo_order_lifecycle",
+      "breakpoints": true
     }
   ]
 }
