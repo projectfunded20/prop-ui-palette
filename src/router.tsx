@@ -1,6 +1,7 @@
 import { QueryClient } from "@tanstack/react-query";
 import { createRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
+import { StatusPage } from "./components/vexo/legal-status";
 
 export const getRouter = () => {
   const queryClient = new QueryClient();
@@ -10,6 +11,8 @@ export const getRouter = () => {
     context: { queryClient },
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
+    defaultErrorComponent: () => <StatusPage kind="500" />,
+    defaultNotFoundComponent: () => <StatusPage kind="404" />,
   });
 
   return router;
