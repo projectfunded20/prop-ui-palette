@@ -26,6 +26,7 @@ import { Route as SignupRouteImport } from './routes/signup'
 import { Route as SupportRouteImport } from './routes/support'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthCallbackRouteImport } from './routes/auth.callback'
 import { Route as LegalCookiesRouteImport } from './routes/legal.cookies'
 import { Route as LegalPrivacyRouteImport } from './routes/legal.privacy'
 import { Route as LegalRefundRouteImport } from './routes/legal.refund'
@@ -126,6 +127,11 @@ const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
   getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthCallbackRoute = AuthCallbackRouteImport.update({
+  id: '/auth/callback',
+  path: '/auth/callback',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const LegalCookiesRoute = LegalCookiesRouteImport.update({
   id: '/legal/cookies',
@@ -236,6 +242,7 @@ export interface FileRoutesByFullPath {
   '/support': typeof SupportRoute
   '/thank-you': typeof ThankYouRoute
   '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
+  '/auth/callback': typeof AuthCallbackRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/refund': typeof LegalRefundRoute
@@ -269,6 +276,7 @@ export interface FileRoutesByTo {
   '/signup': typeof SignupRoute
   '/support': typeof SupportRoute
   '/thank-you': typeof ThankYouRoute
+  '/auth/callback': typeof AuthCallbackRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/refund': typeof LegalRefundRoute
@@ -305,6 +313,7 @@ export interface FileRoutesById {
   '/support': typeof SupportRoute
   '/thank-you': typeof ThankYouRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRouteWithChildren
+  '/auth/callback': typeof AuthCallbackRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/refund': typeof LegalRefundRoute
@@ -341,6 +350,7 @@ export interface FileRouteTypes {
     | '/support'
     | '/thank-you'
     | '/dashboard'
+    | '/auth/callback'
     | '/legal/cookies'
     | '/legal/privacy'
     | '/legal/refund'
@@ -374,6 +384,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/support'
     | '/thank-you'
+    | '/auth/callback'
     | '/legal/cookies'
     | '/legal/privacy'
     | '/legal/refund'
@@ -409,6 +420,7 @@ export interface FileRouteTypes {
     | '/support'
     | '/thank-you'
     | '/_authenticated/dashboard'
+    | '/auth/callback'
     | '/legal/cookies'
     | '/legal/privacy'
     | '/legal/refund'
@@ -444,6 +456,7 @@ export interface RootRouteChildren {
   SignupRoute: typeof SignupRoute
   SupportRoute: typeof SupportRoute
   ThankYouRoute: typeof ThankYouRoute
+  AuthCallbackRoute: typeof AuthCallbackRoute
   LegalCookiesRoute: typeof LegalCookiesRoute
   LegalPrivacyRoute: typeof LegalPrivacyRoute
   LegalRefundRoute: typeof LegalRefundRoute
@@ -571,6 +584,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/dashboard'
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/auth/callback': {
+      id: '/auth/callback'
+      path: '/auth/callback'
+      fullPath: '/auth/callback'
+      preLoaderRoute: typeof AuthCallbackRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/legal/cookies': {
       id: '/legal/cookies'
@@ -752,6 +772,7 @@ const rootRouteChildren: RootRouteChildren = {
   SignupRoute: SignupRoute,
   SupportRoute: SupportRoute,
   ThankYouRoute: ThankYouRoute,
+  AuthCallbackRoute: AuthCallbackRoute,
   LegalCookiesRoute: LegalCookiesRoute,
   LegalPrivacyRoute: LegalPrivacyRoute,
   LegalRefundRoute: LegalRefundRoute,
