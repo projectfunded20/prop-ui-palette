@@ -1,11 +1,11 @@
-import pocket from '@/assets/broker-pocketoption.png.asset.json'
-import quotex from '@/assets/broker-quotex.png.asset.json'
-import binomo from '@/assets/broker-binomo.png.asset.json'
-import olymp from '@/assets/broker-olymptrade.png.asset.json'
-import tradowix from '@/assets/broker-tradowix.jpg.asset.json'
-import btc from '@/assets/crypto-btc.png.asset.json'
-import eth from '@/assets/crypto-eth.png.asset.json'
-import usdt from '@/assets/crypto-usdt.png.asset.json'
+import pocket from '@/assets/broker-pocketoption.png'
+import quotex from '@/assets/broker-quotex.png'
+import binomo from '@/assets/broker-binomo.png'
+import olymp from '@/assets/broker-olymptrade.png'
+import tradowix from '@/assets/broker-tradowix.jpg'
+import btc from '@/assets/crypto-btc.png'
+import eth from '@/assets/crypto-eth.png'
+import usdt from '@/assets/crypto-usdt.png'
 
 export type Plan = { type:'instant'|'challenge'; size:number; price:number; dailyLoss:number; split:number; profitTarget?:number; drawdown?:number; popular?:boolean }
 export const instantPlans:Plan[] = [
@@ -15,14 +15,14 @@ export const challengePlans:Plan[] = [
   {type:'challenge',size:3000,price:48,profitTarget:1200,dailyLoss:900,drawdown:2000,split:92},{type:'challenge',size:5000,price:81,profitTarget:2000,dailyLoss:1500,drawdown:3333,split:92},{type:'challenge',size:8000,price:129,profitTarget:3200,dailyLoss:2400,drawdown:5333,split:92,popular:true},{type:'challenge',size:11000,price:178,profitTarget:4400,dailyLoss:3300,drawdown:7333,split:92},{type:'challenge',size:25000,price:311,profitTarget:10000,dailyLoss:7500,drawdown:16667,split:92},{type:'challenge',size:50000,price:484,profitTarget:20000,dailyLoss:15000,drawdown:33333,split:92},
 ]
 export const brokers = [
-  {name:'Pocket Option',logo:pocket.url,note:'Fast execution, wide instrument range'},{name:'Quotex',logo:quotex.url,note:'Low-latency order routing'},{name:'Binomo',logo:binomo.url,note:'Clean charting, mobile-first'},{name:'Olymp Trade',logo:olymp.url,note:'Established platform, deep liquidity'},{name:'Tradowix',logo:tradowix.url,note:'Institutional grade speed, high reliability'},
+  {name:'Pocket Option',logo:pocket,note:'Fast execution, wide instrument range'},{name:'Quotex',logo:quotex,note:'Low-latency order routing'},{name:'Binomo',logo:binomo,note:'Clean charting, mobile-first'},{name:'Olymp Trade',logo:olymp,note:'Established platform, deep liquidity'},{name:'Tradowix',logo:tradowix,note:'Institutional grade speed, high reliability'},
 ]
 export const crypto = [
-  {id:'USDT ERC20',network:'Ethereum Network (ERC-20)',logo:usdt.url,address:'0x3a34eEf262eb473384271BCae800ad064FaCabf4'},
-  {id:'USDT TRC20',network:'TRON Network (TRC-20)',logo:usdt.url,address:'TNto6htwqih9tuLXn5A1gJy5KHqcKPNTY7'},
-  {id:'USDT BEP20',network:'BNB Smart Chain (BEP-20)',logo:usdt.url,address:'0x3a34eEf262eb473384271BCae800ad064FaCabf4'},
-  {id:'Bitcoin',network:'Bitcoin Mainnet',logo:btc.url,address:'bc1qng02vsgrv68n63alucr24kd8uegsgdh58080gd'},
-  {id:'Ethereum',network:'Ethereum Mainnet',logo:eth.url,address:'0x3a34eEf262eb473384271BCae800ad064FaCabf4'},
+  {id:'USDT ERC20',network:'Ethereum Network (ERC-20)',logo:usdt,address:'0x3a34eEf262eb473384271BCae800ad064FaCabf4'},
+  {id:'USDT TRC20',network:'TRON Network (TRC-20)',logo:usdt,address:'TNto6htwqih9tuLXn5A1gJy5KHqcKPNTY7'},
+  {id:'USDT BEP20',network:'BNB Smart Chain (BEP-20)',logo:usdt,address:'0x3a34eEf262eb473384271BCae800ad064FaCabf4'},
+  {id:'Bitcoin',network:'Bitcoin Mainnet',logo:btc,address:'bc1qng02vsgrv68n63alucr24kd8uegsgdh58080gd'},
+  {id:'Ethereum',network:'Ethereum Mainnet',logo:eth,address:'0x3a34eEf262eb473384271BCae800ad064FaCabf4'},
 ]
 export const howItWorks = [
   ['Choose your account','Pick Instant funding for immediate access, or take the lower-cost Challenge path.'],['Trade within the rules','Work toward your objective while respecting the daily loss and drawdown limits.'],['Complete verification','We review your trading history against the published account rules.'],['Receive funding','Qualified traders receive account access and retain up to 92% of eligible payouts.'],
