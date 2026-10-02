@@ -1,5 +1,69 @@
-import {useState,type FormEvent} from 'react'
-import {Headphones,MessageCircle,Send,X} from 'lucide-react'
-import {Button,Card} from './ui'
-export type LiveSupportAdapter={onOpen?:()=>void;onSend?:(message:string)=>void|Promise<void>}
-export function LiveSupport({adapter}:{adapter?:LiveSupportAdapter}){const[open,setOpen]=useState(false);const[text,setText]=useState('');const[sent,setSent]=useState<string[]>([]);const toggle=()=>{const next=!open;setOpen(next);if(next)adapter?.onOpen?.()};const submit=(e:FormEvent)=>{e.preventDefault();const value=text.trim();if(!value)return;setSent(v=>[...v,value]);setText('');void adapter?.onSend?.(value)};return <div className="fixed bottom-4 right-4 z-50"><Button aria-label={open?'Close live support':'Open live support'} onClick={toggle} className="shadow-modal">{open?<X size={18}/>:<MessageCircle size={18}/>}<span className="hidden sm:inline">Live support</span></Button>{open&&<Card className="absolute bottom-14 right-0 w-[min(22rem,calc(100vw-2rem))] overflow-hidden shadow-modal"><header className="flex items-center gap-3 border-b border-line bg-panel p-4"><Headphones className="text-brand"/><div><b>VEXO Support</b><p className="text-xs text-success">Desk online</p></div></header><div className="h-56 space-y-3 overflow-y-auto p-4 text-sm"><p className="max-w-[85%] rounded-md bg-soft p-3 text-copy">Welcome. How can our trading desk help?</p>{sent.map((m,i)=><p key={i} className="ml-auto max-w-[85%] rounded-md bg-brand/15 p-3 text-brand-soft">{m}</p>)}</div><form onSubmit={submit} className="flex gap-2 border-t border-line p-3"><input value={text} onChange={e=>setText(e.target.value)} aria-label="Support message" placeholder="Write a message" className="min-w-0 flex-1 rounded-md border border-line bg-ink px-3 text-sm"/><Button size="sm" aria-label="Send"><Send size={16}/></Button></form></Card>}</div>}
+import {useEffect,useRef} from 'react'
+import {MessageCircle} from 'lucide-react'
+import {Button} from './ui'
+
+type TawkApi={
+  onLoad?:()=>void
+  onChatMinimized?:()=>void
+  hideWidget?:()=>void
+  showWidget?:()=>void
+  maximize?:()=>void
+}
+
+declare global {
+  interface Window {
+    Tawk_API?:TawkApi
+    Tawk_LoadStart?:Date
+  }
+}
+
+const TAWK_SCRIPT_ID='vexo-tawk-chat'
+const TAWK_SCRIPT_URL='https://embed.tawk.to/6abec63f94972634491fef03/1k3sjcqp6'
+
+export function LiveSupport(){
+  const pendingOpen=useRef(false)
+
+  useEffect(()=>{
+    const api=window.Tawk_API??{}
+    window.Tawk_API=api
+    window.Tawk_LoadStart=window.Tawk_LoadStart??new Date()
+
+    const hideLauncher=()=>api.hideWidget?.()
+    api.onLoad=()=>{
+      hideLauncher()
+      if(pendingOpen.current){
+        pendingOpen.current=false
+        api.showWidget?.()
+        api.maximize?.()
+      }
+    }
+    api.onChatMinimized=hideLauncher
+
+    if(api.hideWidget)hideLauncher()
+    if(!document.getElementById(TAWK_SCRIPT_ID)){
+      const script=document.createElement('script')
+      script.id=TAWK_SCRIPT_ID
+      script.async=true
+      script.src=TAWK_SCRIPT_URL
+      script.charset='UTF-8'
+      script.crossOrigin='anonymous'
+      document.head.appendChild(script)
+    }
+
+    return()=>{
+      pendingOpen.current=false
+    }
+  },[])
+
+  const openChat=()=>{
+    const api=window.Tawk_API
+    if(api?.maximize){
+      api.showWidget?.()
+      api.maximize()
+      return
+    }
+    pendingOpen.current=true
+  }
+
+  return <div className="fixed bottom-4 right-4 z-50"><Button aria-label="Open live support" onClick={openChat} className="shadow-modal"><MessageCircle size={18}/><span className="hidden sm:inline">Live support</span></Button></div>
+}
