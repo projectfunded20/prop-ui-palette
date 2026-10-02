@@ -7,6 +7,8 @@
 - [x] One-hour order rejection persisted in the database
 - [x] Exact approved crypto wallet addresses retained
 - [x] Route-specific metadata, favicon, share image, robots rules, and sitemap
+- [x] Refined Sora and Manrope typography with factual homepage messaging
+- [x] Exact wallet-address QR generation for every payment network
 
 ## Next
 - [ ] Admin panel for manual order review and account delivery
