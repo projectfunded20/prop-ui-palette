@@ -1,2 +1,3 @@
-import {createFileRoute} from '@tanstack/react-router';import {Overview} from '@/components/vexo/dashboard-pages';
-export const Route=createFileRoute('/_authenticated/dashboard/')({head:()=>({meta:[{title:'Dashboard — VEXO FUNDED'},{name:'description',content:'Preview VEXO FUNDED account activity and recent orders.'},{property:'og:title',content:'Dashboard — VEXO FUNDED'},{property:'og:description',content:'Preview VEXO FUNDED account activity and recent orders.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:Overview});
+import {createFileRoute} from '@tanstack/react-router'
+import {Overview} from '@/components/vexo/dashboard-pages'
+export const Route=createFileRoute('/_authenticated/dashboard/')({head:()=>({meta:[{title:'Overview — VEXO FUNDED'},{name:'description',content:'Secure VEXO FUNDED customer area.'},{property:'og:title',content:'Overview — VEXO FUNDED'},{property:'og:description',content:'Secure VEXO FUNDED customer area.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary'}]}),component:Overview})

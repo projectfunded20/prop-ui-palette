@@ -1,2 +1,3 @@
-import {createFileRoute} from '@tanstack/react-router';import {BrokerStep} from '@/components/vexo/checkout-pages';
-export const Route=createFileRoute('/_authenticated/checkout/details')({head:()=>({meta:[{title:'Select Broker — VEXO FUNDED Checkout'},{name:'description',content:'Choose a broker environment for your VEXO FUNDED account.'},{property:'og:title',content:'Select Broker — VEXO FUNDED Checkout'},{property:'og:description',content:'Choose a broker environment for your VEXO FUNDED account.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:()=> <BrokerStep/>});
+import {createFileRoute} from '@tanstack/react-router'
+import {BrokerStep} from '@/components/vexo/checkout-pages'
+export const Route=createFileRoute('/_authenticated/checkout/details')({head:()=>({meta:[{title:'Broker — VEXO FUNDED'},{name:'description',content:'Secure VEXO FUNDED customer area.'},{property:'og:title',content:'Broker — VEXO FUNDED'},{property:'og:description',content:'Secure VEXO FUNDED customer area.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary'}]}),component:BrokerStep})
