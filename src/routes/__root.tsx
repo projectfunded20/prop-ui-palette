@@ -17,7 +17,7 @@ function NotFoundComponent() {
   return <StatusPage kind="404" />;
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: { error: Error; reset?: () => void }) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
