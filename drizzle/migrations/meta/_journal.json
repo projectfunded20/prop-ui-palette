@@ -15,6 +15,13 @@
       "when": 1790950511661,
       "tag": "0001_rebuild_vexo_order_lifecycle",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790950591377,
+      "tag": "0002_harden_vexo_lifecycle_functions",
+      "breakpoints": true
     }
   ]
 }
