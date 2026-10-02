@@ -3,7 +3,7 @@ import {useNavigate,useSearch} from '@tanstack/react-router'
 import {ArrowRight,BarChart3,CheckCircle2,ChevronDown,Clock3,Globe2,Headphones,LineChart,Search,ShieldCheck,Star,Target} from 'lucide-react'
 import hero from '@/assets/vexo-trading-desk.jpg'
 import {brokers,challengePlans,faqs,howItWorks,instantPlans,money,reviews} from '@/lib/vexo-data'
-import {Badge,Button,Card,PlanCard,Section,SiteLayout as Never,cn} from './ui'
+import {Badge,Button,Card,PlanCard,Section,cn} from './ui'
 import {SiteLayout} from './layouts'
 function Header({eyebrow,title,body}:{eyebrow:string;title:string;body:string}){return <Section className="pb-12 pt-36"><div className="max-w-3xl"><p className="text-xs font-bold uppercase text-brand">{eyebrow}</p><h1 className="mt-4 font-display text-4xl font-bold sm:text-5xl">{title}</h1><p className="mt-5 text-lg leading-8 text-muted">{body}</p></div></Section>}
 function Switch({value,onChange}:{value:'instant'|'challenge';onChange:(v:'instant'|'challenge')=>void}){return <div className="inline-flex rounded-md border border-line bg-ink p-1">{(['instant','challenge'] as const).map(v=><button key={v} onClick={()=>onChange(v)} className={cn('rounded px-5 py-2.5 text-sm font-bold capitalize text-muted',value===v&&'bg-action text-action-foreground')}>{v}</button>)}</div>}
