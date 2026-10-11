@@ -72,6 +72,8 @@ function harden(response: Response): Response {
   const isHtml = (res.headers.get("content-type") ?? "").includes("text/html");
   for (const [k, v] of Object.entries(SECURITY_HEADERS)) {
     if (k === "Content-Security-Policy" && !isHtml) continue;
+    // The editor preview loads the site in a frame; only lock framing on the published build.
+    if (!import.meta.env.PROD && (k === "X-Frame-Options" || k === "Content-Security-Policy")) continue;
     res.headers.set(k, v);
   }
   return res;
