@@ -22,4 +22,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://project--d4b6037e-b2d8-4160-a495-87273e6609ed.lovable.app/sitemap.xml
+Sitemap: https://www.vexofunded.com/sitemap.xml

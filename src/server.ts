@@ -44,18 +44,51 @@ function isH3SwallowedErrorBody(body: string): boolean {
   }
 }
 
+const SECURITY_HEADERS: Record<string, string> = {
+  "X-Frame-Options": "DENY",
+  "X-Content-Type-Options": "nosniff",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+  "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+  "Content-Security-Policy": [
+    "default-src 'self'",
+    "script-src 'self' 'unsafe-inline' https://embed.tawk.to https://*.tawk.to",
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://embed.tawk.to https://*.tawk.to",
+    "font-src 'self' data: https://fonts.gstatic.com https://*.tawk.to",
+    "img-src 'self' data: blob: https:",
+    "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://*.tawk.to wss://*.tawk.to",
+    "frame-src https://*.tawk.to",
+    "frame-ancestors 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "object-src 'none'",
+  ].join("; "),
+};
+const STRIP_HEADERS = ["server", "x-powered-by", "x-forwarded-for", "x-real-ip", "cf-connecting-ip"];
+
+function harden(response: Response): Response {
+  const res = new Response(response.body, response);
+  for (const h of STRIP_HEADERS) res.headers.delete(h);
+  const isHtml = (res.headers.get("content-type") ?? "").includes("text/html");
+  for (const [k, v] of Object.entries(SECURITY_HEADERS)) {
+    if (k === "Content-Security-Policy" && !isHtml) continue;
+    res.headers.set(k, v);
+  }
+  return res;
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      return harden(await normalizeCatastrophicSsrResponse(response));
     } catch (error) {
       console.error(error);
-      return new Response(renderErrorPage(), {
+      return harden(new Response(renderErrorPage(), {
         status: 500,
         headers: { "content-type": "text/html; charset=utf-8" },
-      });
+      }));
     }
   },
 };
