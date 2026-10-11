@@ -19,11 +19,11 @@ export const brokers = [
   {name:'Pocket Option',lightSurface:true,logo:pocket,note:'Fast execution, wide instrument range'},{name:'Quotex',logo:quotex,note:'Low-latency order routing'},{name:'Binomo',logo:binomo,note:'Clean charting, mobile-first'},{name:'Olymp Trade',lightSurface:true,logo:olymp,note:'Established platform, deep liquidity'},{name:'Tradowix',lightSurface:true,logo:tradowix,note:'Institutional grade speed, high reliability',wordmark:true},{name:'XPrime',logo:xprime,note:'Precision execution, transparent payouts'},
 ]
 export const crypto = [
-  {id:'USDT ERC20',network:'Ethereum Network (ERC-20)',logo:usdt,address:'0x3a34eEf262eb473384271BCae800ad064FaCabf4'},
-  {id:'USDT TRC20',network:'TRON Network (TRC-20)',logo:usdt,address:'TNto6htwqih9tuLXn5A1gJy5KHqcKPNTY7'},
-  {id:'USDT BEP20',network:'BNB Smart Chain (BEP-20)',logo:usdt,address:'0x3a34eEf262eb473384271BCae800ad064FaCabf4'},
-  {id:'Bitcoin',network:'Bitcoin Mainnet',logo:btc,address:'bc1qng02vsgrv68n63alucr24kd8uegsgdh58080gd'},
-  {id:'Ethereum',network:'Ethereum Mainnet',logo:eth,address:'0x3a34eEf262eb473384271BCae800ad064FaCabf4'},
+  {id:'USDT ERC20',network:'Ethereum Network (ERC-20)',logo:usdt,address:'0xAf47A04AFccE6F741CA3d74BFba5C5a817F4Cab9'},
+  {id:'USDT TRC20',network:'TRON Network (TRC-20)',logo:usdt,address:'TVVjqb6kCyMSJAqbk4KgECP6W3S6k57EpU'},
+  {id:'USDT BEP20',network:'BNB Smart Chain (BEP-20)',logo:usdt,address:'0xAf47A04AFccE6F741CA3d74BFba5C5a817F4Cab9'},
+  {id:'Bitcoin',network:'Bitcoin Mainnet',logo:btc,address:'bc1qhxswu8ez5qn0wlfhxsxwrgwsrku0s8a7xxd4mj'},
+  {id:'Ethereum',network:'Ethereum Mainnet',logo:eth,address:'0xAf47A04AFccE6F741CA3d74BFba5C5a817F4Cab9'},
 ]
 export const howItWorks = [
   ['Choose your account','Pick Instant funding for immediate access, or take the lower-cost Challenge path.'],['Trade within the rules','Work toward your objective while respecting the daily loss and drawdown limits.'],['Complete verification','We review your trading history against the published account rules.'],['Receive funding','Qualified traders receive account access and retain up to 92% of eligible payouts.'],
