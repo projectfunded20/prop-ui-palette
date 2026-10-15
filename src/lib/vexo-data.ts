@@ -20,8 +20,8 @@ export const brokers = [
 ]
 export const crypto = [
   {id:'USDT ERC20',network:'Ethereum Network (ERC-20)',logo:usdt,address:'0xAf47A04AFccE6F741CA3d74BFba5C5a817F4Cab9'},
-  {id:'USDT TRC20',network:'TRON Network (TRC-20)',logo:usdt,address:'TVVjqb6kCyMSJAqbk4KgECP6W3S6k57EpU'},
-  {id:'USDT BEP20',network:'BNB Smart Chain (BEP-20)',logo:usdt,address:'0xAf47A04AFccE6F741CA3d74BFba5C5a817F4Cab9'},
+  {id:'USDT TRC20',network:'TRON Network (TRC-20)',logo:usdt,address:'TQMEndNpmtZAfcF7DfaHx9UkSysBQZDAxd'},
+  {id:'USDT BEP20',network:'BNB Smart Chain (BEP-20)',logo:usdt,address:'0xa8073047789Ff3cdb6F41926153eB775f83d2609'},
   {id:'Bitcoin',network:'Bitcoin Mainnet',logo:btc,address:'bc1qhxswu8ez5qn0wlfhxsxwrgwsrku0s8a7xxd4mj'},
   {id:'Ethereum',network:'Ethereum Mainnet',logo:eth,address:'0xAf47A04AFccE6F741CA3d74BFba5C5a817F4Cab9'},
 ]
@@ -36,3 +36,4 @@ export const reviews = [
 ]
 export const money = (value:number) => `$${value.toLocaleString('en-US')}`
 export function resolvePlan(key?:string){const [kind,size] = String(key ?? 'instant-20000').split('-'); const list=kind==='challenge'?challengePlans:instantPlans; return list.find((p)=>p.size===Number(size)) ?? instantPlans[5]}
+export function prepareOrder(input:{account_type:'instant'|'challenge';account_size:number;broker:string;payment_method:string}){const plan=resolvePlan(`${input.account_type}-${input.account_size}`);return{account_type:plan.type,account_size:plan.size,price:plan.price,broker:input.broker,payment_method:input.payment_method,coupon:null}}
