@@ -1,7 +1,7 @@
 # VEXO FUNDED — roadmap
 
 ## Current request
-- [ ] Update only BEP20/TRC20 wallets and disable all coupon discounts; verify checkout.
+- [x] Update only BEP20/TRC20 wallets and disable all coupon discounts; verify checkout.
 
 ## Done
 - [x] Full VEXO FUNDED codebase rebuild with a new component and page implementation
