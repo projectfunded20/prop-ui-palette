@@ -6,7 +6,7 @@ test('assigned administrator has order review and customer read policies without
   if (!url) throw new Error('Database test connection is required')
   const sql = postgres(url, { max: 1, prepare: false })
   try {
-    const policies = await sql<{tablename:string;cmd:string;roles:string[];qual:string;with_check:string|null}[]>`select tablename, cmd, roles, qual, with_check from pg_policies where schemaname='public' and policyname in ('admins read orders','admins review orders','admins read profiles')`
+    const policies = await sql`select tablename, cmd, roles, qual, with_check from pg_policies where schemaname='public' and policyname in ('admins read orders','admins review orders','admins read profiles')`
     expect(policies).toHaveLength(3)
     for (const policy of policies) {
       expect(policy.roles).toContain('authenticated')
