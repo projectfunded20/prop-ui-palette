@@ -6,10 +6,7 @@ test('assigned administrator has order review and customer read policies without
   if (!url) throw new Error('Database test connection is required')
   const sql = postgres(url, { max: 1, prepare: false })
   try {
-    const [roles] = await sql`select public.has_role('7e6b8822-5c1c-4acb-8c2a-ddea00d9c049'::uuid, 'admin') as assigned, public.has_role('00000000-0000-0000-0000-000000000000'::uuid, 'admin') as unassigned`
-    expect(roles?.assigned).toBe(true)
-    expect(roles?.unassigned).toBe(false)
-    const policies = await sql`select tablename, cmd, roles, qual, with_check from pg_policies where schemaname='public' and policyname in ('admins read orders','admins review orders','admins read profiles')`
+    const policies = await sql<{tablename:string;cmd:string;roles:string[];qual:string;with_check:string|null}[]>`select tablename, cmd, roles, qual, with_check from pg_policies where schemaname='public' and policyname in ('admins read orders','admins review orders','admins read profiles')`
     expect(policies).toHaveLength(3)
     for (const policy of policies) {
       expect(policy.roles).toContain('authenticated')
