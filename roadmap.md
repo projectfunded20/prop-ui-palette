@@ -1,7 +1,8 @@
 # VEXO FUNDED — roadmap
 
 ## Current request
-- [x] Update only BEP20/TRC20 wallets and disable all coupon discounts; verify checkout.
+- [x] Assign the specified existing account an admin role and enable role-checked customer/order/support access without website UI changes.
+- [ ] Verify the external admin panel's live order-review flow; blocked on its URL/source access.
 
 ## Done
 - [x] Full VEXO FUNDED codebase rebuild with a new component and page implementation
