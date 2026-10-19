@@ -1,0 +1,13 @@
+GRANT SELECT ON public.orders, public.profiles, public.support_tickets, public.ticket_messages TO authenticated;
+GRANT UPDATE (status) ON public.orders TO authenticated;
+GRANT UPDATE (full_name, phone, country, updated_at) ON public.profiles TO authenticated;
+GRANT UPDATE (status, updated_at) ON public.support_tickets TO authenticated;
+GRANT INSERT ON public.ticket_messages TO authenticated;
+CREATE POLICY "admins read orders" ON public.orders FOR SELECT TO authenticated USING (public.has_role(auth.uid(), 'admin'));
+CREATE POLICY "admins review orders" ON public.orders FOR UPDATE TO authenticated USING (public.has_role(auth.uid(), 'admin')) WITH CHECK (public.has_role(auth.uid(), 'admin'));
+CREATE POLICY "admins read profiles" ON public.profiles FOR SELECT TO authenticated USING (public.has_role(auth.uid(), 'admin'));
+CREATE POLICY "admins update profiles" ON public.profiles FOR UPDATE TO authenticated USING (public.has_role(auth.uid(), 'admin')) WITH CHECK (public.has_role(auth.uid(), 'admin'));
+CREATE POLICY "admins read tickets" ON public.support_tickets FOR SELECT TO authenticated USING (public.has_role(auth.uid(), 'admin'));
+CREATE POLICY "admins update tickets" ON public.support_tickets FOR UPDATE TO authenticated USING (public.has_role(auth.uid(), 'admin')) WITH CHECK (public.has_role(auth.uid(), 'admin'));
+CREATE POLICY "admins read ticket messages" ON public.ticket_messages FOR SELECT TO authenticated USING (public.has_role(auth.uid(), 'admin'));
+CREATE POLICY "admins reply to tickets" ON public.ticket_messages FOR INSERT TO authenticated WITH CHECK (public.has_role(auth.uid(), 'admin') AND user_id = auth.uid() AND author = 'support' AND EXISTS (SELECT 1 FROM public.support_tickets WHERE id = ticket_id));
