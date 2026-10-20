@@ -1,4 +1,4 @@
-import {describe,expect,it} from 'vitest'
+import {describe,expect,it} from 'bun:test'
 import {rewardProgress} from './affiliate'
 describe('affiliate reward',()=>{
   it('earns one account per three successful purchases',()=>{expect(rewardProgress(3).earned).toBe(1);expect(rewardProgress(6).earned).toBe(2)})
