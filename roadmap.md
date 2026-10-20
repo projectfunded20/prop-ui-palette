@@ -14,6 +14,7 @@
 - [x] Refined Sora and Manrope typography with factual homepage messaging
 - [x] Exact wallet-address QR generation for every payment network
 - [x] Google sign-in callback, mobile logo fallbacks, and global 404/error handling
+- [x] Affiliate referral links served from the site's own domain
 
 ## Next
 - [ ] Admin panel for manual order review and account delivery
