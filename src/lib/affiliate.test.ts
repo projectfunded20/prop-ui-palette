@@ -1,6 +1,5 @@
-import {describe,expect,it} from 'bun:test'
+import {test} from 'node:test'
+import assert from 'node:assert/strict'
 import {rewardProgress} from './affiliate'
-describe('affiliate reward',()=>{
-  it('earns one account per three successful purchases',()=>{expect(rewardProgress(3).earned).toBe(1);expect(rewardProgress(6).earned).toBe(2)})
-  it('earns nothing below three',()=>{expect(rewardProgress(2).earned).toBe(0);expect(rewardProgress(2).remaining).toBe(1)})
-})
+test('earns one $5,000 account per three successful purchases',()=>{assert.equal(rewardProgress(3).earned,1);assert.equal(rewardProgress(6).earned,2)})
+test('earns nothing below three successful purchases',()=>{assert.equal(rewardProgress(2).earned,0);assert.equal(rewardProgress(2).remaining,1)})
