@@ -35,6 +35,7 @@ import { Route as AuthenticatedCheckoutDepositRouteImport } from './routes/_auth
 import { Route as AuthenticatedCheckoutDetailsRouteImport } from './routes/_authenticated/checkout.details'
 import { Route as AuthenticatedCheckoutPaymentRouteImport } from './routes/_authenticated/checkout.payment'
 import { Route as AuthenticatedDashboardIndexRouteImport } from './routes/_authenticated/dashboard.index'
+import { Route as AuthenticatedDashboardAffiliateRouteImport } from './routes/_authenticated/dashboard.affiliate'
 import { Route as AuthenticatedDashboardProfileRouteImport } from './routes/_authenticated/dashboard.profile'
 import { Route as AuthenticatedDashboardSecurityRouteImport } from './routes/_authenticated/dashboard.security'
 import { Route as AuthenticatedDashboardOrdersIndexRouteImport } from './routes/_authenticated/dashboard.orders.index'
@@ -176,6 +177,12 @@ const AuthenticatedDashboardIndexRoute =
     path: '/',
     getParentRoute: () => AuthenticatedDashboardRoute,
   } as any)
+const AuthenticatedDashboardAffiliateRoute =
+  AuthenticatedDashboardAffiliateRouteImport.update({
+    id: '/affiliate',
+    path: '/affiliate',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
 const AuthenticatedDashboardProfileRoute =
   AuthenticatedDashboardProfileRouteImport.update({
     id: '/profile',
@@ -244,6 +251,7 @@ export interface FileRoutesByFullPath {
   '/checkout/deposit': typeof AuthenticatedCheckoutDepositRoute
   '/checkout/details': typeof AuthenticatedCheckoutDetailsRoute
   '/checkout/payment': typeof AuthenticatedCheckoutPaymentRoute
+  '/dashboard/affiliate': typeof AuthenticatedDashboardAffiliateRoute
   '/dashboard/profile': typeof AuthenticatedDashboardProfileRoute
   '/dashboard/security': typeof AuthenticatedDashboardSecurityRoute
   '/dashboard/': typeof AuthenticatedDashboardIndexRoute
@@ -277,6 +285,7 @@ export interface FileRoutesByTo {
   '/checkout/deposit': typeof AuthenticatedCheckoutDepositRoute
   '/checkout/details': typeof AuthenticatedCheckoutDetailsRoute
   '/checkout/payment': typeof AuthenticatedCheckoutPaymentRoute
+  '/dashboard/affiliate': typeof AuthenticatedDashboardAffiliateRoute
   '/dashboard/profile': typeof AuthenticatedDashboardProfileRoute
   '/dashboard/security': typeof AuthenticatedDashboardSecurityRoute
   '/dashboard': typeof AuthenticatedDashboardIndexRoute
@@ -313,6 +322,7 @@ export interface FileRoutesById {
   '/_authenticated/checkout/deposit': typeof AuthenticatedCheckoutDepositRoute
   '/_authenticated/checkout/details': typeof AuthenticatedCheckoutDetailsRoute
   '/_authenticated/checkout/payment': typeof AuthenticatedCheckoutPaymentRoute
+  '/_authenticated/dashboard/affiliate': typeof AuthenticatedDashboardAffiliateRoute
   '/_authenticated/dashboard/profile': typeof AuthenticatedDashboardProfileRoute
   '/_authenticated/dashboard/security': typeof AuthenticatedDashboardSecurityRoute
   '/_authenticated/dashboard/': typeof AuthenticatedDashboardIndexRoute
@@ -349,6 +359,7 @@ export interface FileRouteTypes {
     | '/checkout/deposit'
     | '/checkout/details'
     | '/checkout/payment'
+    | '/dashboard/affiliate'
     | '/dashboard/profile'
     | '/dashboard/security'
     | '/dashboard/'
@@ -382,6 +393,7 @@ export interface FileRouteTypes {
     | '/checkout/deposit'
     | '/checkout/details'
     | '/checkout/payment'
+    | '/dashboard/affiliate'
     | '/dashboard/profile'
     | '/dashboard/security'
     | '/dashboard'
@@ -417,6 +429,7 @@ export interface FileRouteTypes {
     | '/_authenticated/checkout/deposit'
     | '/_authenticated/checkout/details'
     | '/_authenticated/checkout/payment'
+    | '/_authenticated/dashboard/affiliate'
     | '/_authenticated/dashboard/profile'
     | '/_authenticated/dashboard/security'
     | '/_authenticated/dashboard/'
@@ -635,6 +648,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardIndexRouteImport
       parentRoute: typeof AuthenticatedDashboardRoute
     }
+    '/_authenticated/dashboard/affiliate': {
+      id: '/_authenticated/dashboard/affiliate'
+      path: '/affiliate'
+      fullPath: '/dashboard/affiliate'
+      preLoaderRoute: typeof AuthenticatedDashboardAffiliateRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
+    }
     '/_authenticated/dashboard/profile': {
       id: '/_authenticated/dashboard/profile'
       path: '/profile'
@@ -688,6 +708,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedDashboardRouteChildren {
+  AuthenticatedDashboardAffiliateRoute: typeof AuthenticatedDashboardAffiliateRoute
   AuthenticatedDashboardProfileRoute: typeof AuthenticatedDashboardProfileRoute
   AuthenticatedDashboardSecurityRoute: typeof AuthenticatedDashboardSecurityRoute
   AuthenticatedDashboardIndexRoute: typeof AuthenticatedDashboardIndexRoute
@@ -700,6 +721,7 @@ interface AuthenticatedDashboardRouteChildren {
 
 const AuthenticatedDashboardRouteChildren: AuthenticatedDashboardRouteChildren =
   {
+    AuthenticatedDashboardAffiliateRoute: AuthenticatedDashboardAffiliateRoute,
     AuthenticatedDashboardProfileRoute: AuthenticatedDashboardProfileRoute,
     AuthenticatedDashboardSecurityRoute: AuthenticatedDashboardSecurityRoute,
     AuthenticatedDashboardIndexRoute: AuthenticatedDashboardIndexRoute,
