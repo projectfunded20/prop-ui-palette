@@ -3,6 +3,7 @@ import {useQuery} from '@tanstack/react-query'
 import {Check,Copy,Gift,Loader2,ShoppingBag,UserPlus} from 'lucide-react'
 import {Button,Card} from './ui'
 import {fetchAffiliate,PURCHASES_PER_REWARD,REWARD_LABEL,rewardProgress} from '@/lib/affiliate'
+import {affiliateLink} from '@/lib/site'
 import {shortDate} from '@/lib/vexo-api'
 export function Affiliate(){
   const q=useQuery({queryKey:['affiliate'],queryFn:fetchAffiliate})
@@ -10,7 +11,7 @@ export function Affiliate(){
   if(q.isLoading)return <div className="flex items-center gap-2 rounded-lg border border-line bg-card p-5 text-sm text-muted"><Loader2 size={16} className="animate-spin text-brand"/>Loading…</div>
   if(q.error||!q.data)return <Card className="p-8 text-center text-sm text-muted">Affiliate details could not be loaded. Please refresh.</Card>
   const{code,referrals}=q.data
-  const link=code&&typeof window!=='undefined'?`${window.location.origin}/signup?ref=${code}`:''
+  const link=affiliateLink(code??'')
   const successful=referrals.reduce((a,r)=>a+r.successful_purchases,0)
   const purchases=referrals.reduce((a,r)=>a+r.purchases,0)
   const prog=rewardProgress(successful)
