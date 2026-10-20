@@ -67,6 +67,8 @@ export type Database = {
           full_name: string | null
           id: string
           phone: string | null
+          referral_code: string | null
+          referred_by: string | null
           updated_at: string
         }
         Insert: {
@@ -76,6 +78,8 @@ export type Database = {
           full_name?: string | null
           id: string
           phone?: string | null
+          referral_code?: string | null
+          referred_by?: string | null
           updated_at?: string
         }
         Update: {
@@ -85,6 +89,8 @@ export type Database = {
           full_name?: string | null
           id?: string
           phone?: string | null
+          referral_code?: string | null
+          referred_by?: string | null
           updated_at?: string
         }
         Relationships: []
@@ -189,6 +195,15 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      my_affiliate_referrals: {
+        Args: never
+        Returns: {
+          joined_at: string
+          purchases: number
+          referral_name: string
+          successful_purchases: number
+        }[]
       }
       reject_expired_orders: { Args: never; Returns: number }
     }
