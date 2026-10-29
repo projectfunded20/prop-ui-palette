@@ -43,6 +43,13 @@
       "when": 1792498861355,
       "tag": "0005_affiliate_program",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1793300367415,
+      "tag": "0006_approved_orders_xprime",
+      "breakpoints": true
     }
   ]
 }
