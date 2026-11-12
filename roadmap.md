@@ -3,7 +3,7 @@
 ## Current request
 - [x] Check reported intermittent page errors without changing design or unrelated security.
 - [ ] Align hosted password settings with the requested minimum; blocked on the owner's Auth settings change.
-- [ ] Apply and test the shared minimum-password rule in all password creation/change forms.
+- [x] Apply and test the shared minimum-password rule in all password creation/change forms.
 - [x] Assign the specified existing account an admin role and enable role-checked customer/order/support access without website UI changes.
 - [ ] Verify the external admin panel's live order-review flow; blocked on its URL/source access.
 
