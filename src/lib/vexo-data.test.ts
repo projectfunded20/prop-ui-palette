@@ -3,15 +3,15 @@ import assert from 'node:assert/strict'
 import {crypto,instantPlans,challengePlans,prepareOrder} from './vexo-data'
 
 test('BEP20 uses the approved wallet',()=>{
-  assert.equal(crypto.find(n=>n.id==='USDT BEP20')?.address,'0x36452Ad9e154120eE57dF473C873D96eAA6E0854')
+  assert.equal(crypto.find(n=>n.id==='USDT BEP20')?.address,'0x27037cdf68F1731d8953CDa2555827250C376174')
 })
 test('TRC20 uses the approved wallet',()=>{
-  assert.equal(crypto.find(n=>n.id==='USDT TRC20')?.address,'TMhNFNnTkJxAKgQuz6SpdeYTrLSQCVuDZ6')
+  assert.equal(crypto.find(n=>n.id==='USDT TRC20')?.address,'TFXCoDs729RzgkZe7sebDFYJLgVy4EzUPr')
 })
 test('ERC20, Ethereum and Bitcoin use the approved wallets',()=>{
-  assert.equal(crypto.find(n=>n.id==='USDT ERC20')?.address,'0x36452Ad9e154120eE57dF473C873D96eAA6E0854')
-  assert.equal(crypto.find(n=>n.id==='Ethereum')?.address,'0x36452Ad9e154120eE57dF473C873D96eAA6E0854')
-  assert.equal(crypto.find(n=>n.id==='Bitcoin')?.address,'bc1q7y4sd6rw8umyycnd3zlps2m3fk6g0x8hmshp0q')
+  assert.equal(crypto.find(n=>n.id==='USDT ERC20')?.address,'0x27037cdf68F1731d8953CDa2555827250C376174')
+  assert.equal(crypto.find(n=>n.id==='Ethereum')?.address,'0x27037cdf68F1731d8953CDa2555827250C376174')
+  assert.equal(crypto.find(n=>n.id==='Bitcoin')?.address,'bc1qv5tl0fmyac9j33s9ajnj0uqvdkuptcnvg6r8fa')
 })
 test('no coupon or supplied discount can reduce an order price',()=>{
   for(const plan of [...instantPlans,...challengePlans]){
